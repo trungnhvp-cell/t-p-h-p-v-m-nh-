@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Math — Sets &amp; Propositions | Thầy Nguyễn Hữu Trung</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
+<style>
+  :root{--sat-blue:#1B3A6B;--sat-blue-light:#2C5AA0;--sat-blue-pale:#EAF0F9;--sat-green:#4CAF50;--sat-red:#E53935;--sat-yellow:#F5B400;--sat-bg:#F5F7FA;--sat-text:#1a2332;--sat-gray:#5b6778;--sat-gold:#F5B400;--shadow:0 2px 8px rgba(27,58,107,.08);--shadow-lg:0 6px 24px rgba(27,58,107,.14)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter','Segoe UI',Roboto,-apple-system,sans-serif;background:var(--sat-bg);color:var(--sat-text);line-height:1.6}
+  header{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;padding:20px 32px;box-shadow:var(--shadow-lg);position:sticky;top:0;z-index:100}
+  .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-logo{width:44px;height:44px;border-radius:10px;background:#fff;color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;letter-spacing:-1px}
+  .brand-title{font-size:20px;font-weight:700}
+  .brand-sub{font-size:12.5px;opacity:.85;font-weight:400}
+  .header-credit{font-size:12.5px;text-align:right;line-height:1.5;background:rgba(255,255,255,.12);padding:8px 16px;border-radius:10px;border-left:3px solid var(--sat-gold)}
+  .header-credit strong{color:var(--sat-gold);font-weight:800}
+  nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:84px;z-index:99;overflow-x:auto}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;padding:0 16px;gap:4px}
+  .nav-btn{background:none;border:none;padding:16px 20px;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--sat-gray);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s}
+  .nav-btn:hover{color:var(--sat-blue);background:var(--sat-blue-pale)}
+  .nav-btn.active{color:var(--sat-blue);border-bottom-color:var(--sat-blue);background:var(--sat-blue-pale)}
+  main{max-width:1200px;margin:0 auto;padding:32px 20px 80px}
+  .section{display:none;animation:fade .35s ease}
+  .section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .page-title{font-size:28px;font-weight:800;color:var(--sat-blue);margin-bottom:6px}
+  .page-subtitle{color:var(--sat-gray);margin-bottom:28px;font-size:15px}
+  .card{background:#fff;border-radius:14px;padding:26px 28px;box-shadow:var(--shadow);margin-bottom:20px;border:1px solid #eef2f8}
+  .card h3{font-size:20px;color:var(--sat-blue);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--sat-blue-pale);display:flex;align-items:center;gap:10px}
+  .card h3 .num{background:var(--sat-blue);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+  .card h4{font-size:16px;color:var(--sat-blue-light);margin:16px 0 8px}
+  .card p,.card li{margin-bottom:8px}
+  .card ul,.card ol{padding-left:24px}
+  .card ol li,.card ul li{margin-bottom:6px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid #eef2f8;vertical-align:top}
+  th{background:var(--sat-blue-pale);color:var(--sat-blue);font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.5px}
+  tr:hover td{background:#fafcff}
+  .formula-box{background:linear-gradient(135deg,#f0f5ff 0%,#e6efff 100%);border-left:4px solid var(--sat-blue);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:15.5px}
+  .formula-box strong{color:var(--sat-blue);font-weight:800}
+  .vocab-search{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:15px;margin-bottom:16px}
+  .vocab-search:focus{outline:none;border-color:var(--sat-blue-light)}
+  .vocab-table td:nth-child(2){font-family:'Courier New',monospace;color:var(--sat-blue);font-weight:600}
+  .speak-btn{background:none;border:none;cursor:pointer;color:var(--sat-blue);padding:4px 8px;border-radius:6px;transition:background .2s;font-size:15px}
+  .speak-btn:hover{background:var(--sat-blue-pale)}
+  .group-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+  .group-tab{padding:12px 22px;border-radius:10px;border:2px solid #e2e8f0;background:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;color:var(--sat-gray);transition:all .2s}
+  .group-tab:hover{border-color:var(--sat-blue-light)}
+  .group-tab.active{background:var(--sat-blue);color:#fff;border-color:var(--sat-blue)}
+  .group-tab .badge{display:inline-block;margin-left:6px;background:rgba(255,255,255,.25);padding:1px 8px;border-radius:8px;font-size:12px}
+  .group-tab:not(.active) .badge{background:var(--sat-blue-pale);color:var(--sat-blue)}
+  .group-panel{display:none}
+  .group-panel.active{display:block}
+  .q-card{background:#fff;border-radius:14px;padding:24px 26px;box-shadow:var(--shadow);margin-bottom:18px;border-left:5px solid var(--sat-blue-light);transition:border-color .3s}
+  .q-card.correct{border-left-color:var(--sat-green)}
+  .q-card.wrong{border-left-color:var(--sat-red)}
+  .q-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .q-num{background:var(--sat-blue);color:#fff;min-width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
+  .q-card.correct .q-num{background:var(--sat-green)}
+  .q-card.wrong .q-num{background:var(--sat-red)}
+  .q-text{font-size:16px;font-weight:500;flex:1}
+  .options{display:grid;gap:10px;margin-top:16px}
+  .option{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;cursor:pointer;transition:all .18s;font-family:inherit;font-size:15px;text-align:left;color:var(--sat-text);width:100%}
+  .option:hover:not(.disabled){border-color:var(--sat-blue-light);background:#fafcff;transform:translateX(2px)}
+  .option .letter{background:var(--sat-blue-pale);color:var(--sat-blue);width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  .option.correct{border-color:var(--sat-green);background:#eaf7eb}
+  .option.correct .letter{background:var(--sat-green);color:#fff}
+  .option.wrong{border-color:var(--sat-red);background:#fdeaea}
+  .option.wrong .letter{background:var(--sat-red);color:#fff}
+  .option.disabled{cursor:default}
+  .option.disabled:hover{transform:none;background:inherit}
+  .option.selected{border-color:var(--sat-blue);background:#eaf0f9}
+  .option.selected .letter{background:var(--sat-blue);color:#fff}
+  .feedback{margin-top:14px;padding:14px 18px;border-radius:10px;font-size:14.5px;display:none;animation:slideIn .3s ease}
+  @keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eaf7eb;border-left:4px solid var(--sat-green);color:#1f6b24}
+  .feedback.no{background:#fdeaea;border-left:4px solid var(--sat-red);color:#8b1c1c}
+  .feedback strong{display:block;margin-bottom:6px;font-size:15px}
+  .feedback .review{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,0,0,.12);font-size:13.5px;color:var(--sat-blue);font-weight:600}
+  .sat-hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:24px;box-shadow:var(--shadow-lg)}
+  .sat-hero h2{font-size:24px;margin-bottom:8px;font-weight:800}
+  .sat-hero p{opacity:.9;font-size:14.5px;max-width:760px}
+  .sat-info-row{display:flex;gap:24px;margin-top:18px;flex-wrap:wrap}
+  .sat-info{background:rgba(255,255,255,.13);padding:10px 18px;border-radius:10px;font-size:13.5px}
+  .sat-info strong{font-size:17px;display:block;font-weight:800}
+  .btn{padding:11px 24px;border-radius:10px;border:none;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.3px}
+  .btn-primary{background:var(--sat-blue);color:#fff}
+  .btn-primary:hover{background:var(--sat-blue-light);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+  .btn-primary:disabled{background:#b8c4d6;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn-outline{background:#fff;color:var(--sat-blue);border:2px solid var(--sat-blue)}
+  .btn-outline:hover{background:var(--sat-blue-pale)}
+  .btn-sm{padding:7px 14px;font-size:12.5px;border-radius:8px}
+  .home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px}
+  .home-card{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);cursor:pointer;transition:all .25s;border:2px solid transparent}
+  .home-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--sat-blue-light)}
+  .home-card .icon{font-size:32px;margin-bottom:10px}
+  .home-card h4{font-size:16px;color:var(--sat-blue);margin-bottom:6px}
+  .home-card p{font-size:13.5px;color:var(--sat-gray)}
+  .hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:36px 40px;margin-bottom:28px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(245,180,0,.12)}
+  .hero h1{font-size:30px;font-weight:800;margin-bottom:10px}
+  .hero p{opacity:.92;font-size:15.5px;max-width:760px;position:relative}
+  .hero-author{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);display:inline-flex;align-items:center;gap:14px;font-size:13.5px;position:relative}
+  .hero-author .avatar{width:44px;height:44px;border-radius:50%;background:var(--sat-gold);color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+  .hero-author strong{color:var(--sat-gold);font-weight:800;font-size:14.5px;display:block}
+  .hero-author span{opacity:.9}
+  footer{background:linear-gradient(135deg,#0f2547 0%,var(--sat-blue) 100%);color:#fff;padding:36px 32px 24px;margin-top:40px}
+  .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+  .footer-col h4{color:var(--sat-gold);font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;font-weight:800}
+  .footer-col p,.footer-col li{font-size:13.5px;opacity:.88;line-height:1.8}
+  .footer-col ul{list-style:none}
+  .footer-col ul li{cursor:pointer;transition:color .2s}
+  .footer-col ul li:hover{color:var(--sat-gold)}
+  .footer-author-card{background:rgba(255,255,255,.08);border-left:4px solid var(--sat-gold);padding:16px 20px;border-radius:10px;margin-top:8px}
+  .footer-author-card .name{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+  .footer-author-card .role{font-size:13px;color:var(--sat-gold);font-weight:600;margin-bottom:8px}
+  .footer-author-card .phone{font-size:14px;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:6px;background:rgba(245,180,0,.2);padding:6px 12px;border-radius:8px}
+  .footer-bottom{max-width:1200px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);text-align:center;font-size:12.5px;opacity:.75;line-height:1.8}
+  .footer-bottom strong{color:var(--sat-gold);font-weight:800}
+  .sat-set-selector{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:24px}
+  .set-card{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);cursor:pointer;transition:all .25s;border:2px solid transparent;border-top:5px solid var(--sat-blue);position:relative}
+  .set-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--sat-blue-light);border-top-color:var(--sat-gold)}
+  .set-card .set-badge{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);padding:4px 12px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.5px;margin-bottom:10px}
+  .set-card h4{font-size:18px;color:var(--sat-blue);margin-bottom:8px}
+  .set-card p{font-size:13.5px;color:var(--sat-gray);margin-bottom:14px;min-height:52px}
+  .set-card .set-meta{display:flex;gap:14px;font-size:12.5px;color:var(--sat-gray);border-top:1px dashed #e2e8f0;padding-top:12px;flex-wrap:wrap}
+  .set-card .set-meta strong{color:var(--sat-blue);font-weight:800}
+  .set-card .set-start{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--sat-blue);font-size:14px}
+  .test-topbar{background:#fff;border-radius:14px;padding:16px 22px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px;border:1px solid #eef2f8;position:sticky;top:140px;z-index:50}
+  .test-set-name{font-size:16px;font-weight:800;color:var(--sat-blue)}
+  .test-progress{font-size:13px;color:var(--sat-gray);margin-top:2px}
+  .timer-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .timer{font-family:'Courier New',monospace;font-size:24px;font-weight:800;background:var(--sat-blue);color:#fff;padding:8px 18px;border-radius:10px;letter-spacing:2px;min-width:110px;text-align:center;transition:background .3s}
+  .timer.warning{background:var(--sat-yellow);animation:pulse .8s infinite}
+  .timer.danger{background:var(--sat-red);animation:pulse .5s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  .test-layout{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:start}
+  .test-sidebar{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid #eef2f8;position:sticky;top:220px}
+  .test-sidebar h4{font-size:12.5px;color:var(--sat-blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--sat-blue-pale)}
+  .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+  .nav-cell{aspect-ratio:1;border-radius:8px;border:2px solid #e2e8f0;background:#fff;font-family:inherit;font-weight:700;font-size:12px;color:var(--sat-gray);cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;padding:0}
+  .nav-cell:hover{border-color:var(--sat-blue-light)}
+  .nav-cell.answered{background:var(--sat-blue);color:#fff;border-color:var(--sat-blue)}
+  .nav-cell.current{border-color:var(--sat-gold);box-shadow:0 0 0 3px rgba(245,180,0,.3)}
+  .nav-legend{margin-top:14px;font-size:12px;color:var(--sat-gray);display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px dashed #e2e8f0}
+  .nav-legend > div{display:flex;align-items:center;gap:8px}
+  .legend-box{width:14px;height:14px;border-radius:4px;border:2px solid #e2e8f0;background:#fff;display:inline-block}
+  .legend-box.answered{background:var(--sat-blue);border-color:var(--sat-blue)}
+  .legend-box.current{border-color:var(--sat-gold);box-shadow:0 0 0 2px rgba(245,180,0,.3)}
+  .test-main{min-width:0}
+  .test-main .q-card{margin-bottom:14px}
+  .test-nav-btns{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .test-nav-btns .btn{min-width:140px}
+  .result-hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:22px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+  .result-hero h2{font-size:22px;margin-bottom:6px}
+  .result-hero p{opacity:.9;font-size:14px}
+  .result-score{text-align:center;background:rgba(255,255,255,.14);padding:18px 30px;border-radius:14px;border:2px solid rgba(245,180,0,.5)}
+  .result-score .num{font-size:42px;font-weight:800;color:var(--sat-gold);line-height:1}
+  .result-score .den{font-size:16px;opacity:.85;margin-top:4px}
+  .result-score .pct{font-size:14px;font-weight:700;margin-top:8px;padding:4px 12px;background:rgba(255,255,255,.2);border-radius:8px;display:inline-block}
+  .level-banner{background:#fff;border-radius:14px;padding:22px 26px;box-shadow:var(--shadow);border-left:6px solid var(--sat-blue);display:flex;gap:20px;align-items:flex-start;margin-bottom:22px}
+  .level-icon{width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;color:#fff}
+  .level-content{flex:1;min-width:0}
+  .level-content h3{font-size:22px;margin-bottom:8px;font-weight:800}
+  .level-content p{font-size:14.5px;color:var(--sat-text);margin-bottom:6px;line-height:1.65}
+  .level-content .level-advice{background:var(--sat-blue-pale);padding:12px 16px;border-radius:8px;margin-top:10px;font-size:14px;border-left:3px solid var(--sat-blue);line-height:1.65}
+  .result-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
+  .stat-box{background:#fff;border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);border-left:4px solid var(--sat-blue)}
+  .stat-box.green{border-left-color:var(--sat-green)}
+  .stat-box.red{border-left-color:var(--sat-red)}
+  .stat-box.yellow{border-left-color:var(--sat-yellow)}
+  .stat-box .label{font-size:11.5px;color:var(--sat-gray);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+  .stat-box .value{font-size:26px;font-weight:800;color:var(--sat-blue);margin-top:4px;line-height:1.1}
+  .stat-box.green .value{color:var(--sat-green)}
+  .stat-box.red .value{color:var(--sat-red)}
+  .stat-box.yellow .value{color:#b8860b}
+  .stat-box .sub{font-size:12.5px;color:var(--sat-gray);margin-top:4px}
+  .result-section-title{font-size:18px;font-weight:800;color:var(--sat-blue);margin:28px 0 14px;display:flex;align-items:center;gap:10px}
+  .result-section-title .icon{background:var(--sat-blue-pale);color:var(--sat-blue);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .time-analysis{background:#fff;border-radius:14px;padding:22px 26px;box-shadow:var(--shadow);margin-bottom:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;border:1px solid #eef2f8}
+  .time-block{display:flex;gap:14px;align-items:flex-start}
+  .time-block .tb-icon{width:46px;height:46px;border-radius:11px;background:var(--sat-blue-pale);color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .time-block .tb-content{flex:1;min-width:0}
+  .time-block .tb-label{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--sat-gray);font-weight:700;margin-bottom:4px}
+  .time-block .tb-value{font-size:22px;font-weight:800;color:var(--sat-blue);line-height:1.1}
+  .time-block .tb-desc{font-size:12.5px;color:var(--sat-gray);margin-top:4px;line-height:1.5}
+  .topic-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .topic-table th,.topic-table td{padding:12px 16px;text-align:left;border-bottom:1px solid #eef2f8;vertical-align:middle}
+  .topic-table th{background:var(--sat-blue-pale);color:var(--sat-blue);font-size:12px;text-transform:uppercase;letter-spacing:.5px;font-weight:800}
+  .topic-table tr:last-child td{border-bottom:none}
+  .topic-bar{height:9px;background:#e2e8f0;border-radius:5px;overflow:hidden;min-width:100px;flex:1}
+  .topic-bar-cell{display:flex;align-items:center;gap:10px}
+  .topic-bar-fill{height:100%;background:var(--sat-green);transition:width .8s ease;border-radius:5px}
+  .topic-bar-fill.warn{background:var(--sat-yellow)}
+  .topic-bar-fill.bad{background:var(--sat-red)}
+  .topic-score{font-weight:800;color:var(--sat-blue);min-width:44px;text-align:right}
+  .topic-recommend{font-size:12.5px;color:var(--sat-gray);margin-top:6px;padding:8px 12px;background:#fafcff;border-radius:6px;border-left:2px solid var(--sat-blue-light);line-height:1.5;font-style:italic}
+  .roadmap{background:#fff;border-radius:14px;padding:26px 28px;box-shadow:var(--shadow);border-left:6px solid var(--sat-gold);margin-bottom:22px}
+  .roadmap h3{font-size:19px;color:var(--sat-blue);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .roadmap .roadmap-sub{font-size:13.5px;color:var(--sat-gray);margin-bottom:18px;line-height:1.6}
+  .roadmap-phase{padding:18px 0;border-bottom:1px dashed #e2e8f0;display:flex;gap:18px;align-items:flex-start}
+  .roadmap-phase:last-child{border-bottom:none;padding-bottom:0}
+  .roadmap-phase .phase-num{width:48px;height:48px;border-radius:12px;background:var(--sat-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0}
+  .roadmap-phase.phase-1 .phase-num{background:var(--sat-red)}
+  .roadmap-phase.phase-2 .phase-num{background:#E8A317}
+  .roadmap-phase.phase-3 .phase-num{background:var(--sat-green)}
+  .roadmap-phase .phase-content{flex:1;min-width:0}
+  .roadmap-phase h4{font-size:15.5px;color:var(--sat-blue);margin-bottom:8px;font-weight:800;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .roadmap-phase .phase-time{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:6px}
+  .roadmap-phase ul{padding-left:22px;margin-top:6px}
+  .roadmap-phase li{font-size:13.5px;margin-bottom:6px;color:var(--sat-text);line-height:1.6}
+  .roadmap-phase .phase-actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+  .wrong-item{background:#fff;border-radius:12px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:14px;border-left:5px solid var(--sat-red)}
+  .wrong-item.unanswered{border-left-color:var(--sat-gray)}
+  .wrong-item .wrong-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+  .wrong-item .wrong-num{background:var(--sat-red);color:#fff;min-width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+  .wrong-item.unanswered .wrong-num{background:var(--sat-gray)}
+  .wrong-item .wrong-q{font-size:15px;font-weight:600;flex:1;line-height:1.55}
+  .wrong-item .topic-tag{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);font-size:11.5px;padding:2px 10px;border-radius:6px;font-weight:700;margin-top:6px}
+  .wrong-item .ans-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;font-size:14px}
+  .wrong-item .ans-box{padding:10px 14px;border-radius:8px;background:#f5f7fa;border-left:3px solid var(--sat-gray)}
+  .wrong-item .ans-box.your{background:#fdeaea;border-left-color:var(--sat-red)}
+  .wrong-item .ans-box.correct{background:#eaf7eb;border-left-color:var(--sat-green)}
+  .wrong-item .ans-box .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--sat-gray);font-weight:700;margin-bottom:4px}
+  .wrong-item .ans-box .val{font-weight:600;color:var(--sat-text)}
+  .wrong-item .exp-box{background:var(--sat-blue-pale);padding:12px 16px;border-radius:8px;font-size:14px;border-left:3px solid var(--sat-blue);margin-top:10px;line-height:1.7}
+  .wrong-item .exp-box .lbl{font-weight:800;color:var(--sat-blue);margin-bottom:4px;font-size:13px}
+  .wrong-item .review-box{margin-top:10px;font-size:13.5px;color:var(--sat-blue);font-weight:600;padding:10px 14px;background:#fafcff;border-radius:8px;border:1px dashed var(--sat-blue-light)}
+  .result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  @media(max-width:900px){.test-layout{grid-template-columns:1fr}.test-sidebar{position:static}.nav-grid{grid-template-columns:repeat(10,1fr)}.result-hero{grid-template-columns:1fr}}
+  @media(max-width:640px){header{padding:14px 16px}.brand-title{font-size:16px}.header-credit{font-size:11.5px;padding:6px 12px;text-align:left}.nav-btn{padding:14px 12px;font-size:13px}main{padding:20px 12px 60px}.card{padding:20px 18px}.sat-hero{padding:24px 20px}.timer{font-size:20px;padding:6px 14px;min-width:90px}.hero{padding:26px 22px}.hero h1{font-size:22px}.page-title{font-size:22px}.footer-inner{grid-template-columns:1fr;gap:24px}footer{padding:28px 18px 20px}.nav-grid{grid-template-columns:repeat(5,1fr)}.wrong-item .ans-row{grid-template-columns:1fr}.result-score .num{font-size:34px}.test-topbar{position:static}.test-sidebar{position:static}.level-banner{flex-direction:column;gap:14px;padding:18px}.level-icon{width:52px;height:52px;font-size:28px}.level-content h3{font-size:18px}.roadmap{padding:20px 18px}.roadmap-phase{flex-direction:column;gap:12px}.time-analysis{padding:18px;grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">SAT</div>
+      <div><div class="brand-title">SAT Math — Sets &amp; Propositions</div><div class="brand-sub">Tập hợp · Mệnh đề · Logic · Lượng từ</div></div>
+    </div>
+    <div class="header-credit">Thiết kế bởi <strong>Thầy Nguyễn Hữu Trung</strong><br>THPT Trần Phú • ☎ 0964 848 989</div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" data-tab="home">🏠 Trang chủ</button>
+    <button class="nav-btn" data-tab="knowledge">📐 Kiến thức</button>
+    <button class="nav-btn" data-tab="vocab">📚 Từ vựng</button>
+    <button class="nav-btn" data-tab="practice">✏️ Luyện tập</button>
+    <button class="nav-btn" data-tab="sat">⏱️ SAT Simulation</button>
+  </div>
+</nav>
+
+<main>
+
+<section id="home" class="section active">
+  <div class="hero">
+    <h1>Tập hợp &amp; Mệnh đề — Nền tảng tư duy logic cho SAT Math</h1>
+    <p>Chuyên đề song ngữ Việt–Anh về <strong>tập hợp, các phép toán trên tập hợp, mệnh đề, phép toán logic, lượng từ và điều kiện cần/đủ</strong>. Đây là nền tảng tư duy giúp em xử lý nhanh các câu hỏi SAT về <strong>data analysis, Venn diagram, logical reasoning và word problems</strong> ở mức 700+. Hệ thống gồm <strong>kiến thức trọng tâm, 30 từ vựng có phiên âm, 30 câu luyện tập tức thì và 3 bộ SAT Simulation × 20 câu</strong> có đồng hồ, âm thanh và lộ trình cá nhân hóa.</p>
+    <div class="hero-author"><div class="avatar">NT</div><div><strong>Thầy Nguyễn Hữu Trung</strong><span>Giáo viên Toán — THPT Trần Phú • ☎ 0964 848 989</span></div></div>
+  </div>
+  <div class="home-grid">
+    <div class="home-card" onclick="switchTab('knowledge')"><div class="icon">📐</div><h4>1. Kiến thức cơ bản</h4><p>Tập hợp, tập con, các phép toán (hợp, giao, hiệu, phần bù), mệnh đề, phép toán logic, lượng từ và điều kiện cần/đủ.</p></div>
+    <div class="home-card" onclick="switchTab('vocab')"><div class="icon">📚</div><h4>2. Từ vựng chuyên ngành</h4><p>30 từ khóa về tập hợp và mệnh đề kèm phiên âm IPA và phát âm tự động.</p></div>
+    <div class="home-card" onclick="switchTab('practice')"><div class="icon">✏️</div><h4>3. Luyện tập 3 nhóm</h4><p>30 câu trắc nghiệm tiếng Anh từ cơ bản đến nâng cao, chấm điểm ngay và gợi ý ôn lại lý thuyết khi sai.</p></div>
+    <div class="home-card" onclick="switchTab('sat')"><div class="icon">⏱️</div><h4>4. SAT Simulation</h4><p>3 bộ đề × 20 câu theo phong cách Digital SAT, đồng hồ 30 phút/bộ, hiệu ứng âm thanh và phân tích kết quả chi tiết.</p></div>
+  </div>
+</section>
+
+<section id="knowledge" class="section">
+  <h2 class="page-title">📐 Kiến thức cơ bản — Tập hợp &amp; Mệnh đề</h2>
+  <p class="page-subtitle">Song ngữ Việt — Anh · Trọng tâm hiểu bản chất để vận dụng vào SAT Math</p>
+
+  <div class="card">
+    <h3><span class="num">I</span> Tập hợp và ký hiệu — Sets and Notation</h3>
+    <table>
+      <tr><th>Tiếng Việt</th><th>English</th></tr>
+      <tr><td><strong>Tập hợp</strong> là một nhóm các đối tượng xác định. Các đối tượng gọi là <strong>phần tử</strong>.</td><td>A <strong>set</strong> is a collection of distinct objects called <strong>elements</strong>.</td></tr>
+      <tr><td>\(a \in A\): a thuộc A; \(a \notin A\): a không thuộc A.</td><td>\(a \in A\): a is an element of A; \(a \notin A\): a is not in A.</td></tr>
+      <tr><td>\(A \subseteq B\): A là tập con của B (mọi phần tử của A đều thuộc B).</td><td>\(A \subseteq B\): A is a subset of B (every element of A is in B).</td></tr>
+      <tr><td>\(A = B\): hai tập bằng nhau. \(\varnothing\): tập rỗng (empty set).</td><td>\(A = B\): equal sets. \(\varnothing\): empty set.</td></tr>
+      <tr><td>Liệt kê: \(A = \{1, 2, 3\}\). Chỉ tính chất: \(A = \{x \in \mathbb{R} : x > 0\}\).</td><td>Roster: \(A = \{1, 2, 3\}\). Set-builder: \(A = \{x \in \mathbb{R} : x > 0\}\).</td></tr>
+      <tr><td>Số tập con của tập có \(n\) phần tử là \(2^n\).</td><td>A set with \(n\) elements has \(2^n\) subsets (power set).</td></tr>
+    </table>
+    <div class="formula-box">
+      <strong>Công thức (Formulas):</strong> \[ |A \cup B| = |A| + |B| - |A \cap B| \qquad \text{Power set: } |\mathcal{P}(A)| = 2^{|A|} \]
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">II</span> Các phép toán trên tập hợp — Set Operations</h3>
+    <table>
+      <tr><th>Phép toán</th><th>Ký hiệu</th><th>Định nghĩa (Definition)</th></tr>
+      <tr><td>Hợp (Union)</td><td>\(A \cup B\)</td><td>\(\{x : x \in A \text{ or } x \in B\}\)</td></tr>
+      <tr><td>Giao (Intersection)</td><td>\(A \cap B\)</td><td>\(\{x : x \in A \text{ and } x \in B\}\)</td></tr>
+      <tr><td>Hiệu (Difference)</td><td>\(A \setminus B\)</td><td>\(\{x : x \in A \text{ and } x \notin B\}\)</td></tr>
+      <tr><td>Phần bù (Complement)</td><td>\(A^c\) hoặc \(\overline{A}\)</td><td>\(\{x \in U : x \notin A\}\) (\(U\) là tập vũ trụ)</td></tr>
+    </table>
+    <div class="formula-box">
+      <strong>Tính chất (Properties):</strong><br>
+      • Giao hoán (Commutative): \(A \cup B = B \cup A\), \(A \cap B = B \cap A\).<br>
+      • Kết hợp (Associative): \((A \cup B) \cup C = A \cup (B \cup C)\).<br>
+      • Phân phối (Distributive): \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).<br>
+      • De Morgan: \((A \cup B)^c = A^c \cap B^c\), \((A \cap B)^c = A^c \cup B^c\).
+    </div>
+    <div class="formula-box">
+      <strong>Ví dụ (Example):</strong> \(A = \{1,2,3,4\}\), \(B = \{3,4,5,6\}\).<br>
+      \(A \cup B = \{1,2,3,4,5,6\}\), \(A \cap B = \{3,4\}\), \(A \setminus B = \{1,2\}\).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">III</span> Mệnh đề — Propositions</h3>
+    <table>
+      <tr><th>Tiếng Việt</th><th>English</th></tr>
+      <tr><td><strong>Mệnh đề</strong> là câu khẳng định có thể đúng hoặc sai, nhưng không thể vừa đúng vừa sai.</td><td>A <strong>proposition</strong> is a declarative statement that is either true or false, but not both.</td></tr>
+      <tr><td>Ví dụ mệnh đề: "2 + 2 = 4" (đúng), "5 là số chẵn" (sai).</td><td>Examples: "2 + 2 = 4" (true), "5 is even" (false).</td></tr>
+      <tr><td>Không phải mệnh đề: "x + 1 = 3" (phụ thuộc x), "Mấy giờ rồi?" (câu hỏi).</td><td>Not propositions: "x + 1 = 3" (depends on x), "What time is it?" (question).</td></tr>
+      <tr><td><strong>Chân lý</strong> (truth value): Đ (True) hoặc S (False).</td><td><strong>Truth value</strong>: T (True) or F (False).</td></tr>
+    </table>
+    <div class="formula-box">
+      <strong>Ký hiệu:</strong> Mệnh đề thường ký hiệu \(P, Q, R, \ldots\)
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">IV</span> Phép toán logic — Logical Operations</h3>
+    <table>
+      <tr><th>Phép toán</th><th>Ký hiệu</th><th>Đúng khi nào (True when)</th></tr>
+      <tr><td>Phủ định (Negation)</td><td>\(\neg P\) / \(\overline{P}\)</td><td>P sai</td></tr>
+      <tr><td>Hội (Conjunction — AND)</td><td>\(P \land Q\)</td><td>Cả P và Q đều đúng</td></tr>
+      <tr><td>Tuyển (Disjunction — OR)</td><td>\(P \lor Q\)</td><td>P đúng hoặc Q đúng</td></tr>
+      <tr><td>Kéo theo (Implication)</td><td>\(P \Rightarrow Q\)</td><td>P sai, hoặc cả P và Q đều đúng</td></tr>
+      <tr><td>Tương đương (Equivalence)</td><td>\(P \Leftrightarrow Q\)</td><td>P và Q cùng đúng hoặc cùng sai</td></tr>
+    </table>
+    <div class="formula-box">
+      <strong>Tương đương quan trọng (Key equivalences):</strong><br>
+      • \(P \Rightarrow Q \equiv \neg P \lor Q\)<br>
+      • \(\neg(P \land Q) \equiv \neg P \lor \neg Q\) (De Morgan)<br>
+      • \(\neg(P \lor Q) \equiv \neg P \land \neg Q\) (De Morgan)<br>
+      • \(\neg(P \Rightarrow Q) \equiv P \land \neg Q\)<br>
+      • \(P \Rightarrow Q \equiv \neg Q \Rightarrow \neg P\) (contrapositive / phản đảo)
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">V</span> Lượng từ &amp; Điều kiện cần–đủ — Quantifiers &amp; Conditions</h3>
+    <table>
+      <tr><th>Khái niệm</th><th>Ký hiệu</th><th>Ý nghĩa</th></tr>
+      <tr><td>Với mọi (Universal)</td><td>\(\forall x \in A, P(x)\)</td><td>Mọi phần tử của A đều thỏa P(x)</td></tr>
+      <tr><td>Tồn tại (Existential)</td><td>\(\exists x \in A, P(x)\)</td><td>Có ít nhất một phần tử của A thỏa P(x)</td></tr>
+      <tr><td>Phủ định \(\forall\)</td><td>\(\neg(\forall x, P(x)) \equiv \exists x, \neg P(x)\)</td><td>—</td></tr>
+      <tr><td>Phủ định \(\exists\)</td><td>\(\neg(\exists x, P(x)) \equiv \forall x, \neg P(x)\)</td><td>—</td></tr>
+    </table>
+    <h4>Điều kiện cần và điều kiện đủ (Necessary and Sufficient Conditions)</h4>
+    <p>Cho mệnh đề \(P \Rightarrow Q\) (Nếu P thì Q):</p>
+    <ul>
+      <li><strong>P là điều kiện đủ</strong> để có Q (P is sufficient for Q).</li>
+      <li><strong>Q là điều kiện cần</strong> để có P (Q is necessary for P).</li>
+    </ul>
+    <div class="formula-box">
+      <strong>Ví dụ (Example):</strong> "Nếu \(n\) chia hết cho 6 thì \(n\) chia hết cho 3."<br>
+      • "Chia hết cho 6" là điều kiện <strong>đủ</strong> để "chia hết cho 3".<br>
+      • "Chia hết cho 3" là điều kiện <strong>cần</strong> để "chia hết cho 6".
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">VI</span> Ứng dụng trong SAT Math — Sets &amp; Logic in the Digital SAT</h3>
+    <ul>
+      <li><strong>Bài toán Venn diagram:</strong> Cho số học sinh thích các môn, tính số thích ít nhất một môn, số thích đúng một môn, số không thích môn nào — dùng công thức \(|A \cup B| = |A| + |B| - |A \cap B|\).</li>
+      <li><strong>Đọc hiểu logic:</strong> SAT Verbal có câu hỏi suy luận logic dựa trên mệnh đề kéo theo và phản đảo.</li>
+      <li><strong>Xác định counterexample:</strong> Để bác bỏ mệnh đề \(\forall x, P(x)\), chỉ cần chỉ ra một \(x\) mà \(P(x)\) sai.</li>
+      <li><strong>Tập số và khoảng:</strong> Bài toán về miền xác định hàm số, bất phương trình — biểu diễn bằng interval và set-builder notation.</li>
+    </ul>
+    <div class="formula-box">
+      <strong>Chiến lược SAT (SAT Strategy):</strong><br>
+      ① Xác định dạng bài: Venn / logic / interval / quantifier.<br>
+      ② Với Venn: vẽ sơ đồ, điền từ trong ra ngoài (all three → exactly two → exactly one → none).<br>
+      ③ Với logic: dùng bảng chân lý hoặc phản đảo để kiểm tra.<br>
+      ④ Với mệnh đề \(\forall\): tìm counterexample để bác bỏ.
+    </div>
+  </div>
+</section>
+
+<section id="vocab" class="section">
+  <h2 class="page-title">📚 Từ vựng SAT Math — Sets &amp; Propositions</h2>
+  <p class="page-subtitle">30 từ khóa cốt lõi kèm phiên âm IPA — Nhấn 🔊 để nghe phát âm</p>
+  <div class="card">
+    <input type="text" id="vocabSearch" class="vocab-search" placeholder="🔍 Tìm kiếm từ vựng (tiếng Anh hoặc tiếng Việt)...">
+    <div style="overflow-x:auto">
+      <table class="vocab-table" id="vocabTable">
+        <thead><tr><th>#</th><th>English</th><th>Phiên âm (IPA)</th><th>Nghĩa</th><th>Ví dụ</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="practice" class="section">
+  <h2 class="page-title">✏️ Luyện tập trắc nghiệm — Sets &amp; Propositions</h2>
+  <p class="page-subtitle">30 câu tiếng Anh · Chấm điểm ngay · Gợi ý ôn lại lý thuyết nếu sai</p>
+  <div class="group-tabs">
+    <button class="group-tab active" data-group="1">🟢 Nhóm 1 — Cơ bản <span class="badge">10</span></button>
+    <button class="group-tab" data-group="2">🟡 Nhóm 2 — Trung bình <span class="badge">10</span></button>
+    <button class="group-tab" data-group="3">🔴 Nhóm 3 — Nâng cao <span class="badge">10</span></button>
+  </div>
+  <div class="group-panel active" id="panel-1"></div>
+  <div class="group-panel" id="panel-2"></div>
+  <div class="group-panel" id="panel-3"></div>
+</section>
+
+<section id="sat" class="section">
+  <h2 class="page-title">⏱️ SAT Digital Simulation — Sets, Logic &amp; Quantitative Reasoning</h2>
+  <p class="page-subtitle">3 bộ đề × 20 câu — Phong cách Digital SAT Math · Đồng hồ 30 phút</p>
+  <div class="sat-hero">
+    <h2>📘 Digital SAT Math — Sets, Venn Diagrams &amp; Logical Reasoning</h2>
+    <p>Mỗi bộ gồm <strong>20 câu hỏi tuyển chọn</strong> theo phong cách SAT (word problems, Venn diagrams, logical reasoning, intervals), thời gian <strong>30 phút</strong>. Sau khi nộp bài, em nhận <strong>bảng tổng kết điểm, đánh giá năng lực, lộ trình ôn tập cá nhân hóa</strong> và <strong>phân tích chi tiết từng câu sai</strong>.</p>
+    <div class="sat-info-row">
+      <div class="sat-info"><strong>60</strong>Câu hỏi (3 bộ)</div>
+      <div class="sat-info"><strong>30:00</strong>Mỗi bộ</div>
+      <div class="sat-info"><strong>Calculator</strong>Allowed</div>
+      <div class="sat-info"><strong>A–D</strong>4 lựa chọn</div>
+    </div>
+  </div>
+  <div id="satSetSelector" class="sat-set-selector"></div>
+  <div id="satTestScreen" style="display:none">
+    <div class="test-topbar">
+      <div>
+        <div class="test-set-name" id="testSetName">Bộ 1</div>
+        <div class="test-progress" id="testProgress">Câu 1 / 20 · Đã trả lời 0/20</div>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer" id="testTimer">30:00</div>
+        <button class="btn btn-primary" id="btnSubmitTest">📝 Nộp bài</button>
+        <button class="btn btn-outline" id="btnForceResult">📊 Xem kết quả ngay</button>
+        <button class="btn btn-outline" id="btnQuitTest">✕ Thoát</button>
+      </div>
+    </div>
+    <div class="test-layout">
+      <aside class="test-sidebar">
+        <h4>Bảng câu hỏi</h4>
+        <div class="nav-grid" id="navGrid"></div>
+        <div class="nav-legend">
+          <div><span class="legend-box current"></span> Câu đang xem</div>
+          <div><span class="legend-box answered"></span> Đã trả lời</div>
+          <div><span class="legend-box"></span> Chưa trả lời</div>
+        </div>
+      </aside>
+      <div class="test-main">
+        <div class="q-card" id="testQuestionCard">
+          <div class="q-head"><div class="q-num" id="testQNum">1</div><div class="q-text" id="testQText"></div></div>
+          <div class="options" id="testOptions"></div>
+        </div>
+        <div class="test-nav-btns">
+          <button class="btn btn-outline" id="btnPrev">← Câu trước</button>
+          <button class="btn btn-primary" id="btnNext">Câu tiếp →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="satResultScreen" style="display:none"></div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>📘 Về chuyên đề</h4>
+      <p>Web ôn thi SAT Math chuyên đề <strong>Sets &amp; Propositions</strong> (Tập hợp và mệnh đề), thiết kế cho học sinh lớp 12 chuẩn bị Digital SAT. Nội dung song ngữ, bài tập sát cấu trúc SAT và hệ thống phân tích kết quả cá nhân hóa.</p>
+      <div class="footer-author-card"><div class="name">👨‍🏫 Thầy Nguyễn Hữu Trung</div><div class="role">Giáo viên Toán — THPT Trần Phú</div><div class="phone">📞 0964 848 989</div></div>
+    </div>
+    <div class="footer-col">
+      <h4>🧭 Điều hướng</h4>
+      <ul>
+        <li onclick="switchTab('home')">🏠 Trang chủ</li>
+        <li onclick="switchTab('knowledge')">📐 Kiến thức cơ bản</li>
+        <li onclick="switchTab('vocab')">📚 Từ vựng SAT Math</li>
+        <li onclick="switchTab('practice')">✏️ Luyện tập 3 nhóm</li>
+        <li onclick="switchTab('sat')">⏱️ SAT Simulation</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>📞 Liên hệ</h4>
+      <ul>
+        <li>👤 <strong>Thầy Nguyễn Hữu Trung</strong></li>
+        <li>🏫 THPT Trần Phú</li>
+        <li>☎️ 0964 848 989</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <strong>Thầy Nguyễn Hữu Trung — THPT Trần Phú</strong></p>
+    <p style="margin-top:6px">Made with ❤️ for high school students preparing for the Digital SAT</p>
+  </div>
+</footer>
+
+<script>
+/* ============ TAB SWITCHING ============ */
+function switchTab(tab){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  document.querySelector('.nav-btn[data-tab="'+tab+'"]').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav-btn').forEach(btn=>{btn.addEventListener('click',()=>switchTab(btn.dataset.tab));});
+
+/* ============ SOUND ============ */
+let audioCtx=null;
+function getCtx(){if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended') audioCtx.resume();return audioCtx;}
+function playDing(){try{const ctx=getCtx();[880,1320].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.setValueAtTime(f,ctx.currentTime+i*0.08);g.gain.setValueAtTime(0.18,ctx.currentTime+i*0.08);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.08+0.35);o.start(ctx.currentTime+i*0.08);o.stop(ctx.currentTime+i*0.08+0.4);});}catch(e){}}
+function playBuzz(){try{const ctx=getCtx();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.3);g.gain.setValueAtTime(0.15,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.35);o.start(ctx.currentTime);o.stop(ctx.currentTime+0.4);}catch(e){}}
+function playFanfare(){try{const ctx=getCtx();[523,659,784,1046].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.setValueAtTime(f,ctx.currentTime+i*0.12);g.gain.setValueAtTime(0.2,ctx.currentTime+i*0.12);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.12+0.5);o.start(ctx.currentTime+i*0.12);o.stop(ctx.currentTime+i*0.12+0.6);});}catch(e){}}
+
+/* ============ VOCABULARY ============ */
+const vocab=[
+  ["set","/set/","tập hợp","A set is a collection of elements."],
+  ["element","/ˈelɪmənt/","phần tử","2 is an element of {1, 2, 3}."],
+  ["subset","/ˈsʌbset/","tập con","{1, 2} is a subset of {1, 2, 3}."],
+  ["union","/ˈjuːniən/","hợp","A ∪ B contains all elements of A and B."],
+  ["intersection","/ˌɪntərˈsekʃn/","giao","A ∩ B contains common elements."],
+  ["complement","/ˈkɑːmplɪment/","phần bù","The complement of A in U."],
+  ["difference","/ˈdɪfrəns/","hiệu","A \\ B contains elements in A but not B."],
+  ["empty set","/ˈempti set/","tập rỗng","The empty set has no elements."],
+  ["universal set","/ˌjuːnɪˈvɜːrsl set/","tập vũ trụ","U is the universal set."],
+  ["Venn diagram","/ˈven daɪəɡræm/","biểu đồ Venn","Use a Venn diagram to visualize sets."],
+  ["proposition","/ˌprɑːpəˈzɪʃn/","mệnh đề","\"2 + 2 = 4\" is a proposition."],
+  ["statement","/ˈsteɪtmənt/","câu khẳng định","A statement can be true or false."],
+  ["truth value","/truːθ ˈvæljuː/","giá trị chân lý","The truth value is either T or F."],
+  ["negation","/nɪˈɡeɪʃn/","phủ định","The negation of P is ¬P."],
+  ["conjunction","/kənˈdʒʌŋkʃn/","hội (và)","P ∧ Q is a conjunction."],
+  ["disjunction","/dɪsˈdʒʌŋkʃn/","tuyển (hoặc)","P ∨ Q is a disjunction."],
+  ["implication","/ˌɪmplɪˈkeɪʃn/","kéo theo","P → Q is an implication."],
+  ["equivalence","/ɪˈkwɪvələns/","tương đương","P ↔ Q is an equivalence."],
+  ["conditional","/kənˈdɪʃənl/","có điều kiện","A conditional statement: if P then Q."],
+  ["converse","/ˈkɑːnvɜːrs/","mệnh đề đảo","The converse of P → Q is Q → P."],
+  ["inverse","/ˌɪnˈvɜːrs/","mệnh đề phủ định đảo","The inverse of P → Q is ¬P → ¬Q."],
+  ["contrapositive","/ˌkɑːntrəˈpɑːzətɪv/","mệnh đề phản đảo","P → Q ≡ ¬Q → ¬P."],
+  ["quantifier","/ˈkwɑːntɪfaɪər/","lượng từ","∀ and ∃ are quantifiers."],
+  ["universal quantifier","/ˌjuːnɪˈvɜːrsl ˈkwɑːntɪfaɪər/","lượng từ phổ dụng","∀ means \"for all\"."],
+  ["existential quantifier","/ˌeɡzɪˈstenʃl ˈkwɑːntɪfaɪər/","lượng từ tồn tại","∃ means \"there exists\"."],
+  ["counterexample","/ˈkaʊntərɪɡzæmpl/","phản ví dụ","x = -1 is a counterexample."],
+  ["necessary condition","/ˈnesəseri kənˈdɪʃn/","điều kiện cần","Q is necessary for P in P → Q."],
+  ["sufficient condition","/səˈfɪʃnt kənˈdɪʃn/","điều kiện đủ","P is sufficient for Q in P → Q."],
+  ["interval","/ˈɪntərvl/","khoảng","[1, 3) is a half-open interval."],
+  ["cardinality","/ˌkɑːrdɪˈnæləti/","lực lượng (số phần tử)","|A| denotes the cardinality of A."]
+];
+
+function renderVocab(filter){
+  filter = filter || "";
+  const tbody=document.querySelector('#vocabTable tbody');
+  tbody.innerHTML='';
+  const f=filter.toLowerCase().trim();
+  vocab.forEach((v,i)=>{
+    if(f && !(v[0].toLowerCase().indexOf(f)>=0||v[2].toLowerCase().indexOf(f)>=0)) return;
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+(i+1)+'</td><td>'+v[0]+'</td><td>'+v[1]+'</td><td>'+v[2]+'</td><td>'+v[3]+'</td><td><button class="speak-btn" data-word="'+v[0]+'" title="Phát âm">🔊</button></td>';
+    tbody.appendChild(tr);
+  });
+  if(window.renderMathInElement){renderMathInElement(tbody,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+}
+document.getElementById('vocabSearch').addEventListener('input',function(e){renderVocab(e.target.value);});
+document.addEventListener('click',function(e){
+  if(e.target.classList.contains('speak-btn')){
+    const word=e.target.dataset.word;
+    if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.9;speechSynthesis.speak(u);}
+  }
+});
+renderVocab();
+
+/* ============ PRACTICE DATA 30 câu ============ */
+const practiceData={
+  1:[
+    {q:"If \(A = \\{1, 2, 3\\}\) and \(B = \\{2, 3, 4\\}\), what is \(A \\cup B\)?",opts:["\\(\\{2, 3\\}\\)","\\(\\{1, 2, 3, 4\\}\\)","\\(\\{1, 4\\}\\)","\\(\\{1, 2, 3\\}\\)"],ans:1,exp:"Hợp (union) gồm tất cả phần tử của A hoặc B: \\(\\{1, 2, 3, 4\\}\\).",review:"Ôn mục II — Phép hợp"},
+    {q:"Which of the following is a subset of \\(\\{a, b, c\\}\\)?",opts:["\\(\\{a, d\\}\\)","\\(\\{a, c\\}\\)","\\(\\{d\\}\\)","\\(\\{a, b, c, d\\}\\)"],ans:1,exp:"Tập con chỉ chứa phần tử thuộc tập mẹ. \\(\\{a, c\\} \\subseteq \\{a, b, c\\}\\).",review:"Ôn mục I — Tập con"},
+    {q:"Which symbol denotes the empty set?",opts:["\\(\\varnothing\\)","\\(\\cup\\)","\\(\\cap\\)","\\(\\subseteq\\)"],ans:0,exp:"\\(\\varnothing\\) là ký hiệu tập rỗng (empty set).",review:"Ôn mục I — Ký hiệu tập hợp"},
+    {q:"If \(A = \\{1, 2, 3\\}\) and \(B = \\{3, 4, 5\\}\), what is \(A \\cap B\)?",opts:["\\(\\{1, 2, 3, 4, 5\\}\\)","\\(\\{3\\}\\)","\\(\\varnothing\\)","\\(\\{1, 2\\}\\)"],ans:1,exp:"Giao (intersection) gồm phần tử chung: \\(\\{3\\}\\).",review:"Ôn mục II — Phép giao"},
+    {q:"Which of the following is NOT a proposition?",opts:["\\(2 + 2 = 4\\)","What time is it?","Hanoi is the capital of Vietnam","5 is an odd number"],ans:1,exp:"Câu hỏi không có giá trị chân lý xác định ⇒ không phải mệnh đề.",review:"Ôn mục III — Mệnh đề"},
+    {q:"The negation of \"All birds can fly\" is:",opts:["No birds can fly","Some birds cannot fly","All birds cannot fly","Some birds can fly"],ans:1,exp:"Phủ định của \\(\\forall x, P(x)\\) là \\(\\exists x, \\neg P(x)\\): tồn tại ít nhất một con chim không bay được.",review:"Ôn mục V — Phủ định lượng từ"},
+    {q:"If \(A = \\{1, 2, 3, 4, 5\\}\) and \(B = \\{2, 4\\}\), then \(A \\setminus B = \\)?",opts:["\\(\\{1, 3, 5\\}\\)","\\(\\{2, 4\\}\\)","\\(\\{1, 2, 3, 4, 5\\}\\)","\\(\\varnothing\\)"],ans:0,exp:"Hiệu \\(A \\setminus B\\) gồm phần tử thuộc A mà không thuộc B: \\(\\{1, 3, 5\\}\\).",review:"Ôn mục II — Phép hiệu"},
+    {q:"How many subsets does \\(\\{x, y\\}\\) have?",opts:["2","3","4","1"],ans:2,exp:"Số tập con = \\(2^n = 2^2 = 4\\): \\(\\varnothing, \\{x\\}, \\{y\\}, \\{x, y\\}\\).",review:"Ôn mục I — Số tập con"},
+    {q:"What does the symbol \\(\\in\\) mean?",opts:["is a subset of","belongs to / is an element of","union","empty set"],ans:1,exp:"\\(a \\in A\\) nghĩa là a là phần tử của A.",review:"Ôn mục I — Ký hiệu phần tử"},
+    {q:"If \(P\) is true and \(Q\) is false, what is the truth value of \(P \\land Q\)?",opts:["True","False","Undefined","Both"],ans:1,exp:"\\(P \\land Q\\) chỉ đúng khi cả P và Q đều đúng. Ở đây Q sai ⇒ sai.",review:"Ôn mục IV — Phép hội"}
+  ],
+  2:[
+    {q:"What is \\([1, 3) \\cap (2, 5]\\)?",opts:["\\((2, 3)\\)","\\([2, 3)\\)","\\((2, 3]\\)","\\([1, 5]\\)"],ans:0,exp:"Phần chung của \\([1, 3)\\) và \\((2, 5]\\) là \\((2, 3)\\).",review:"Ôn mục VI — Khoảng và giao"},
+    {q:"De Morgan's Law states that \\(\\neg(P \\land Q)\\) is equivalent to:",opts:["\\(\\neg P \\land \\neg Q\\)","\\(\\neg P \\lor \\neg Q\\)","\\(P \\lor Q\\)","\\(\\neg P \\Rightarrow Q\\)"],ans:1,exp:"\\(\\neg(P \\land Q) \\equiv \\neg P \\lor \\neg Q\\).",review:"Ôn mục IV — De Morgan"},
+    {q:"The implication \\(P \\Rightarrow Q\\) is false only when:",opts:["P true, Q true","P true, Q false","P false, Q true","P false, Q false"],ans:1,exp:"\\(P \\Rightarrow Q\\) chỉ sai khi P đúng và Q sai.",review:"Ôn mục IV — Phép kéo theo"},
+    {q:"The converse of \"If it rains, the ground is wet\" is:",opts:["If the ground is wet, it rains","If it doesn't rain, the ground is not wet","If the ground is not wet, it doesn't rain","It rains and the ground is wet"],ans:0,exp:"Mệnh đề đảo của \\(P \\Rightarrow Q\\) là \\(Q \\Rightarrow P\\).",review:"Ôn mục IV — Mệnh đề đảo"},
+    {q:"Which is the negation of \\(\\forall x \\in \\mathbb{R}, x^2 \\geq 0\\)?",opts:["\\(\\forall x \\in \\mathbb{R}, x^2 < 0\\)","\\(\\exists x \\in \\mathbb{R}, x^2 < 0\\)","\\(\\exists x \\in \\mathbb{R}, x^2 \\geq 0\\)","\\(\\forall x \\in \\mathbb{R}, x^2 \\leq 0\\)"],ans:1,exp:"\\(\\neg(\\forall x, P(x)) \\equiv \\exists x, \\neg P(x)\\).",review:"Ôn mục V — Phủ định lượng từ"},
+    {q:"\\(\\exists x \\in \\mathbb{Z}, x^2 = 2\\) is:",opts:["True","False","Undefined","Depends"],ans:1,exp:"Không có số nguyên nào bình phương bằng 2 (chỉ có \\(\\pm\\sqrt{2}\\) không nguyên).",review:"Ôn mục V — Lượng từ tồn tại"},
+    {q:"\\(A \\cup (B \\cap C)\\) is equal to:",opts:["\\((A \\cup B) \\cap (A \\cup C)\\)","\\((A \\cap B) \\cup C\\)","\\(A \\cap (B \\cup C)\\)","\\((A \\cup B) \\cap C\\)"],ans:0,exp:"Tính phân phối: \\(A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C)\\).",review:"Ôn mục II — Tính phân phối"},
+    {q:"If set \\(A\\) has 3 elements, its power set has how many elements?",opts:["3","6","8","9"],ans:2,exp:"\\(|\\mathcal{P}(A)| = 2^{|A|} = 2^3 = 8\\).",review:"Ôn mục I — Power set"},
+    {q:"Which of the following is equivalent to \\(P \\Rightarrow Q\\)?",opts:["\\(Q \\Rightarrow P\\)","\\(\\neg P \\lor Q\\)","\\(\\neg P \\land Q\\)","\\(P \\lor \\neg Q\\)"],ans:1,exp:"\\(P \\Rightarrow Q \\equiv \\neg P \\lor Q\\).",review:"Ôn mục IV — Tương đương logic"},
+    {q:"The set \\(\\{x \\in \\mathbb{R} : 1 < x \\leq 5\\}\\) in interval notation is:",opts:["\\((1, 5)\\)","\\([1, 5]\\)","\\((1, 5]\\)","\\([1, 5)\\)"],ans:2,exp:"\\(1 < x\\) (không lấy 1) và \\(x \\leq 5\\) (lấy 5) ⇒ \\((1, 5]\\).",review:"Ôn mục VI — Khoảng"}
+  ],
+  3:[
+    {q:"Which of the following is a necessary condition for \"\\(n\\) is divisible by 6\"?",opts:["\\(n\\) is odd","\\(n\\) is divisible by 3","\\(n\\) is divisible by 12","\\(n\\) is prime"],ans:1,exp:"Nếu \\(n\\) chia hết cho 6 thì \\(n\\) chia hết cho 3. Vậy \"chia hết cho 3\" là điều kiện cần.",review:"Ôn mục V — Điều kiện cần"},
+    {q:"The contrapositive of \"If \\(n^2\\) is even, then \\(n\\) is even\" is:",opts:["If \\(n\\) is even, then \\(n^2\\) is even","If \\(n\\) is not even, then \\(n^2\\) is not even","If \\(n^2\\) is not even, then \\(n\\) is not even","If \\(n\\) is not even, then \\(n^2\\) is even"],ans:2,exp:"Phản đảo của \\(P \\Rightarrow Q\\) là \\(\\neg Q \\Rightarrow \\neg P\\).",review:"Ôn mục IV — Phản đảo"},
+    {q:"What is the negation of \\(\\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, x + y = 0\\)?",opts:["\\(\\forall x, \\exists y, x + y \\neq 0\\)","\\(\\exists x, \\forall y, x + y \\neq 0\\)","\\(\\exists x, \\exists y, x + y \\neq 0\\)","\\(\\forall x, \\forall y, x + y \\neq 0\\)"],ans:1,exp:"\\(\\neg(\\forall x, \\exists y, P) \\equiv \\exists x, \\forall y, \\neg P\\).",review:"Ôn mục V — Phủ định lượng từ lồng nhau"},
+    {q:"In a class of 40 students, 25 like Math, 20 like Physics, 10 like both. How many like neither?",opts:["5","10","15","20"],ans:0,exp:"Số thích ít nhất một môn = \\(25 + 20 - 10 = 35\\). Không thích môn nào = \\(40 - 35 = 5\\).",review:"Ôn mục VI — Venn diagram"},
+    {q:"\\(A = (-\\infty, 2)\\), \\(B = [1, \\infty)\\). Find \\(A \\cap B\\).",opts:["\\((-\\infty, \\infty)\\)","\\([1, 2)\\)","\\((1, 2)\\)","\\([1, 2]\\)"],ans:1,exp:"\\((-\\infty, 2) \\cap [1, \\infty) = [1, 2)\\).",review:"Ôn mục VI — Giao khoảng"},
+    {q:"Which is logically equivalent to \\(\\neg(P \\Rightarrow Q)\\)?",opts:["\\(\\neg P \\land Q\\)","\\(P \\land \\neg Q\\)","\\(\\neg P \\lor Q\\)","\\(P \\Rightarrow \\neg Q\\)"],ans:1,exp:"\\(\\neg(P \\Rightarrow Q) \\equiv \\neg(\\neg P \\lor Q) \\equiv P \\land \\neg Q\\).",review:"Ôn mục IV — Phủ định kéo theo"},
+    {q:"The statement \"If \\(x^2 = 1\\), then \\(x = 1\\)\" is:",opts:["True","False (counterexample: \\(x = -1\\))","Always true","Undefined"],ans:1,exp:"\\(x = -1\\) cũng có \\(x^2 = 1\\) nhưng \\(x \\neq 1\\). Đây là phản ví dụ.",review:"Ôn mục V — Phản ví dụ"},
+    {q:"\\(A \\cap (B \\cup C) = \\)?",opts:["\\((A \\cap B) \\cup (A \\cap C)\\)","\\((A \\cup B) \\cap C\\)","\\(A \\cup (B \\cap C)\\)","\\((A \\cap B) \\cap C\\)"],ans:0,exp:"Tính phân phối: \\(A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)\\).",review:"Ôn mục II — Tính phân phối"},
+    {q:"For \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{2, 4, 6, 8\\}\\), \\(C = \\{3, 4, 5, 6\\}\\), what is \\(A \\cap B \\cap C\\)?",opts:["\\(\\{4\\}\\)","\\(\\{2, 4\\}\\)","\\(\\{3, 4\\}\\)","\\(\\varnothing\\)"],ans:0,exp:"Phần tử chung của cả ba tập chỉ có 4.",review:"Ôn mục II — Giao ba tập"},
+    {q:"\"There exists a real number \\(x\\) such that \\(x^2 + 1 = 0\\)\" is:",opts:["True","False","Undefined","Sometimes true"],ans:1,exp:"\\(x^2 \\geq 0\\) với mọi \\(x \\in \\mathbb{R}\\) nên \\(x^2 + 1 \\geq 1 > 0\\). Mệnh đề sai.",review:"Ôn mục V — Lượng từ tồn tại"}
+  ]
+};
+
+const letterMap=['A','B','C','D'];
+
+function renderPractice(group){
+  const container=document.getElementById('panel-'+group);
+  container.innerHTML='';
+  practiceData[group].forEach(function(item,idx){
+    const card=document.createElement('div');
+    card.className='q-card';card.id='g'+group+'q'+idx;
+    let optsHtml='';
+    item.opts.forEach(function(o,i){
+      optsHtml+='<button class="option" data-group="'+group+'" data-q="'+idx+'" data-opt="'+i+'"><span class="letter">'+letterMap[i]+'</span><span class="opt-text">'+o+'</span></button>';
+    });
+    card.innerHTML='<div class="q-head"><div class="q-num">'+(idx+1)+'</div><div class="q-text">'+item.q+'</div></div><div class="options">'+optsHtml+'</div><div class="feedback" id="fb-'+group+'-'+idx+'"></div>';
+    container.appendChild(card);
+  });
+  if(window.renderMathInElement){renderMathInElement(container,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+}
+document.querySelectorAll('.group-tab').forEach(function(tab){
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.group-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.group-panel').forEach(function(p){p.classList.remove('active');});
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.group).classList.add('active');
+  });
+});
+[1,2,3].forEach(renderPractice);
+
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('.option');
+  if(!btn||btn.classList.contains('disabled')) return;
+  const group=btn.dataset.group;if(!group) return;
+  const qIdx=+btn.dataset.q, optIdx=+btn.dataset.opt;
+  const card=document.getElementById('g'+group+'q'+qIdx);
+  const item=practiceData[group][qIdx];
+  const fb=document.getElementById('fb-'+group+'-'+qIdx);
+  const allOpts=card.querySelectorAll('.option');
+  allOpts.forEach(function(o){o.classList.add('disabled');});
+  allOpts[item.ans].classList.add('correct');
+  const isCorrect=optIdx===item.ans;
+  if(!isCorrect){btn.classList.add('wrong');}
+  card.classList.add(isCorrect?'correct':'wrong');
+  fb.className='feedback show '+(isCorrect?'ok':'no');
+  if(isCorrect){
+    fb.innerHTML='<strong>✅ Correct!</strong>'+item.exp+'<div class="review">💡 '+item.review+'</div>';
+    playDing();
+  } else {
+    fb.innerHTML='<strong>❌ Incorrect. Correct answer: '+letterMap[item.ans]+'</strong>'+item.exp+'<div class="review">📖 Ôn tập lại: '+item.review+'</div>';
+    playBuzz();
+  }
+  if(window.renderMathInElement){renderMathInElement(fb,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+});
+
+/* ============ SAT TOPICS & RECOMMENDATIONS ============ */
+const TOPICS = {
+  SETS:"Tập hợp và ký hiệu",
+  SETOPS:"Phép toán trên tập hợp",
+  INTERVALS:"Khoảng và biểu diễn số",
+  PROPS:"Mệnh đề và giá trị chân lý",
+  LOGIC:"Phép toán logic",
+  QUANT:"Lượng từ",
+  CONDITIONS:"Điều kiện cần và đủ",
+  VENN:"Venn diagram và ứng dụng",
+  EQUIV:"Tương đương logic"
+};
+const TOPIC_RECOMMENDATIONS = {
+  SETS:"Ôn mục I: định nghĩa tập hợp, phần tử (\\(\\in\\)), tập con (\\(\\subseteq\\)), số tập con \\(2^n\\).",
+  SETOPS:"Ôn mục II: hợp (\\(\\cup\\)), giao (\\(\\cap\\)), hiệu (\\(\\setminus\\)), phần bù, tính phân phối và De Morgan.",
+  INTERVALS:"Ôn mục VI: biểu diễn khoảng \\([a,b], (a,b), [a,b), (a,b]\\); phép giao/hợp khoảng.",
+  PROPS:"Ôn mục III: mệnh đề là câu khẳng định có giá trị chân lý xác định (T/F).",
+  LOGIC:"Ôn mục IV: \\(\\land, \\lor, \\Rightarrow, \\Leftrightarrow\\), bảng chân lý, phản đảo.",
+  QUANT:"Ôn mục V: \\(\\forall, \\exists\\); phủ định lượng từ; phản ví dụ.",
+  CONDITIONS:"Ôn mục V: \\(P \\Rightarrow Q\\) — P là điều kiện đủ, Q là điều kiện cần.",
+  VENN:"Ôn mục VI: \\(|A \\cup B| = |A| + |B| - |A \\cap B|\\); điền Venn từ trong ra ngoài.",
+  EQUIV:"Ôn mục IV: \\(P \\Rightarrow Q \\equiv \\neg P \\lor Q\\); \\(\\neg(P \\Rightarrow Q) \\equiv P \\land \\neg Q\\)."
+};
+
+/* ============ SAT SETS — 3 × 20 = 60 câu ============ */
+const SAT_SETS = {
+  1:{name:"Set 1 — Foundations",desc:"Tập hợp cơ bản, tập con, phép hợp–giao–hiệu, mệnh đề đơn giản, Venn diagram cơ bản và khoảng số.",questions:[
+    {q:"If \\(A = \\{1, 2, 3\\}\\) and \\(B = \\{3, 4\\}\\), what is \\(A \\cup B\\)?",opts:["\\(\\{3\\}\\)","\\(\\{1, 2, 4\\}\\)","\\(\\{1, 2, 3, 4\\}\\)","\\(\\varnothing\\)"],ans:2,topic:"SETOPS",exp:"Hợp gồm tất cả phần tử: \\(\\{1, 2, 3, 4\\}\\).",review:"Ôn mục II"},
+    {q:"How many subsets does a set with 5 elements have?",opts:["5","10","25","32"],ans:3,topic:"SETS",exp:"Số tập con = \\(2^5 = 32\\).",review:"Ôn mục I"},
+    {q:"A school survey of 30 students: 18 play soccer, 15 play basketball, 8 play both. How many play at least one sport?",opts:["25","23","33","30"],ans:0,topic:"VENN",exp:"\\(|A \\cup B| = 18 + 15 - 8 = 25\\).",review:"Ôn mục VI"},
+    {q:"Which of the following is NOT a proposition?",opts:["\\(2 + 3 = 5\\)","\\(x + 1 = 3\\)","Paris is in France","7 is prime"],ans:1,topic:"PROPS",exp:"\\(x + 1 = 3\\) phụ thuộc vào \\(x\\) ⇒ không có giá trị chân lý xác định.",review:"Ôn mục III"},
+    {q:"The negation of \"All students passed the exam\" is:",opts:["No students passed","Some students did not pass","All students failed","Some students passed"],ans:1,topic:"QUANT",exp:"\\(\\neg(\\forall x, P(x)) \\equiv \\exists x, \\neg P(x)\\).",review:"Ôn mục V"},
+    {q:"If \\(P\\) is true and \\(Q\\) is false, what is \\(P \\Rightarrow Q\\)?",opts:["True","False","Undefined","Both"],ans:1,topic:"LOGIC",exp:"\\(P \\Rightarrow Q\\) sai khi P đúng, Q sai.",review:"Ôn mục IV"},
+    {q:"What is the intersection of \\(A = \\{2, 4, 6, 8, 10\\}\\) and \\(B = \\{3, 6, 9\\}\\)?",opts:["\\(\\{6\\}\\)","\\(\\{2, 4\\}\\)","\\(\\varnothing\\)","\\(\\{3, 6\\}\\)"],ans:0,topic:"SETOPS",exp:"Phần tử chung duy nhất là 6.",review:"Ôn mục II"},
+    {q:"In a class of 35, 20 like tea, 15 like coffee, 5 like neither. How many like both?",opts:["5","10","0","15"],ans:0,topic:"VENN",exp:"Số thích ít nhất một loại = \\(35 - 5 = 30\\). Both = \\(20 + 15 - 30 = 5\\).",review:"Ôn mục VI"},
+    {q:"If \\(U = \\{1, 2, \\ldots, 10\\}\\) and \\(A = \\{2, 4, 6, 8, 10\\}\\), what is \\(A^c\\)?",opts:["\\(\\{1, 3, 5, 7, 9\\}\\)","\\(\\{2, 4, 6, 8, 10\\}\\)","\\(\\varnothing\\)","\\(\\{1, 2, \\ldots, 10\\}\\)"],ans:0,topic:"SETOPS",exp:"Phần bù gồm các số lẻ từ 1 đến 9.",review:"Ôn mục II"},
+    {q:"\"If it rains, then the ground is wet.\" The contrapositive is:",opts:["If the ground is wet, it rains","If it doesn't rain, the ground is not wet","If the ground is not wet, it doesn't rain","It rains and the ground is wet"],ans:2,topic:"LOGIC",exp:"Phản đảo của \\(P \\Rightarrow Q\\) là \\(\\neg Q \\Rightarrow \\neg P\\).",review:"Ôn mục IV"},
+    {q:"What is \\(\\{x \\in \\mathbb{R} : -2 \\leq x < 3\\}\\) in interval notation?",opts:["\\((-2, 3)\\)","\\([-2, 3)\\)","\\((-2, 3]\\)","\\([-2, 3]\\)"],ans:1,topic:"INTERVALS",exp:"\\(-2 \\leq x\\) (lấy -2) và \\(x < 3\\) (không lấy 3) ⇒ \\([-2, 3)\\).",review:"Ôn mục VI"},
+    {q:"If \\(A = \\{a, b, c\\}\\) and \\(B = \\{b, c, d\\}\\), find \\(A \\setminus B\\).",opts:["\\(\\{a\\}\\)","\\(\\{d\\}\\)","\\(\\{a, d\\}\\)","\\(\\{b, c\\}\\)"],ans:0,topic:"SETOPS",exp:"\\(A \\setminus B\\) gồm phần tử thuộc A mà không thuộc B: chỉ có \\(a\\).",review:"Ôn mục II"},
+    {q:"The statement \\(\\exists x \\in \\mathbb{R}, x^2 = -1\\) is:",opts:["True","False","Undefined","Depends"],ans:1,topic:"QUANT",exp:"\\(x^2 \\geq 0\\) với mọi \\(x\\) thực ⇒ không tồn tại.",review:"Ôn mục V"},
+    {q:"\\(P \\Leftrightarrow Q\\) is true when:",opts:["P true, Q false","P false, Q true","P and Q have the same truth value","Only when both are true"],ans:2,topic:"LOGIC",exp:"Tương đương đúng khi P và Q cùng đúng hoặc cùng sai.",review:"Ôn mục IV"},
+    {q:"How many elements are in the power set of \\(\\{1, 2, 3\\}\\)?",opts:["3","6","8","9"],ans:2,topic:"SETS",exp:"\\(2^3 = 8\\).",review:"Ôn mục I"},
+    {q:"The negation of \\(\\exists x \\in \\mathbb{R}, x > 5\\) is:",opts:["\\(\\forall x, x > 5\\)","\\(\\forall x, x \\leq 5\\)","\\(\\exists x, x \\leq 5\\)","\\(\\exists x, x > 5\\)"],ans:1,topic:"QUANT",exp:"\\(\\neg(\\exists x, P) \\equiv \\forall x, \\neg P\\).",review:"Ôn mục V"},
+    {q:"\\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{4, 5, 6, 7\\}\\). Find \\(A \\cap B \\cap C\\).",opts:["\\(\\{4\\}\\)","\\(\\{3, 4\\}\\)","\\(\\{4, 5\\}\\)","\\(\\varnothing\\)"],ans:0,topic:"SETOPS",exp:"Phần tử chung của cả ba tập là 4.",review:"Ôn mục II"},
+    {q:"Which symbol denotes \"is a subset of\"?",opts:["\\(\\in\\)","\\(\\subseteq\\)","\\(\\cup\\)","\\(\\cap\\)"],ans:1,topic:"SETS",exp:"\\(\\subseteq\\) là ký hiệu tập con.",review:"Ôn mục I"},
+    {q:"If \\(A \\subseteq B\\) and \\(B \\subseteq A\\), then:",opts:["\\(A = B\\)","\\(A \\subset B\\) strictly","\\(A = \\varnothing\\)","\\(B = \\varnothing\\)"],ans:0,topic:"SETS",exp:"Hai tập con của nhau thì bằng nhau.",review:"Ôn mục I"},
+    {q:"The number of elements in \\(A \\cup B\\) if \\(|A| = 10\\), \\(|B| = 8\\), \\(|A \\cap B| = 3\\):",opts:["15","18","21","13"],ans:0,topic:"VENN",exp:"\\(|A \\cup B| = 10 + 8 - 3 = 15\\).",review:"Ôn mục VI"}
+  ]},
+  2:{name:"Set 2 — Intermediate",desc:"Phép toán tập hợp phức tạp hơn, De Morgan, mệnh đề kéo theo, lượng tử, Venn diagram 2–3 tập và khoảng số.",questions:[
+    {q:"What is \\((-\\infty, 3] \\cap [1, 5)\\)?",opts:["\\((-\\infty, 5)\\)","\\([1, 3]\\)","\\((1, 3)\\)","\\([1, 3)\\)"],ans:1,topic:"INTERVALS",exp:"\\((-\\infty, 3] \\cap [1, 5) = [1, 3]\\).",review:"Ôn mục VI"},
+    {q:"In a survey of 100 people, 60 read newspaper A, 50 read B, 30 read both. How many read neither?",opts:["10","20","30","40"],ans:1,topic:"VENN",exp:"\\(|A \\cup B| = 60 + 50 - 30 = 80\\). Neither = \\(100 - 80 = 20\\).",review:"Ôn mục VI"},
+    {q:"\\(P \\Rightarrow Q\\) is logically equivalent to:",opts:["\\(Q \\Rightarrow P\\)","\\(\\neg P \\lor Q\\)","\\(\\neg P \\land Q\\)","\\(P \\land \\neg Q\\)"],ans:1,topic:"LOGIC",exp:"\\(P \\Rightarrow Q \\equiv \\neg P \\lor Q\\).",review:"Ôn mục IV"},
+    {q:"The contrapositive of \"If \\(n\\) is odd, then \\(n^2\\) is odd\" is:",opts:["If \\(n\\) is even, then \\(n^2\\) is even","If \\(n^2\\) is odd, then \\(n\\) is odd","If \\(n^2\\) is even, then \\(n\\) is even","If \\(n\\) is even, then \\(n^2\\) is odd"],ans:2,topic:"LOGIC",exp:"Phản đảo của \\(P \\Rightarrow Q\\) là \\(\\neg Q \\Rightarrow \\neg P\\): \"\\(n^2\\) even ⇒ \\(n\\) even\".",review:"Ôn mục IV"},
+    {q:"\\(\\neg(P \\lor Q) \\equiv \\)?",opts:["\\(\\neg P \\land \\neg Q\\)","\\(\\neg P \\lor \\neg Q\\)","\\(P \\land Q\\)","\\(\\neg P \\Rightarrow Q\\)"],ans:0,topic:"LOGIC",exp:"De Morgan: \\(\\neg(P \\lor Q) \\equiv \\neg P \\land \\neg Q\\).",review:"Ôn mục IV"},
+    {q:"Which is the negation of \\(\\forall x \\in \\mathbb{R}, x^2 + 1 > 0\\)?",opts:["\\(\\exists x, x^2 + 1 \\leq 0\\)","\\(\\forall x, x^2 + 1 \\leq 0\\)","\\(\\exists x, x^2 + 1 > 0\\)","\\(\\forall x, x^2 + 1 < 0\\)"],ans:0,topic:"QUANT",exp:"\\(\\neg(\\forall x, P) \\equiv \\exists x, \\neg P\\).",review:"Ôn mục V"},
+    {q:"\\(A \\cap (B \\cup C) = \\)?",opts:["\\((A \\cap B) \\cup (A \\cap C)\\)","\\((A \\cup B) \\cap C\\)","\\(A \\cup (B \\cap C)\\)","\\((A \\cap B) \\cap C\\)"],ans:0,topic:"SETOPS",exp:"Tính phân phối: \\(A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)\\).",review:"Ôn mục II"},
+    {q:"\\(A = \\{x \\in \\mathbb{R} : |x| < 3\\}\\), \\(B = \\{x \\in \\mathbb{R} : x > 1\\}\\). Find \\(A \\cap B\\).",opts:["\\((1, 3)\\)","\\((-3, 1)\\)","\\((1, \\infty)\\)","\\((-3, \\infty)\\)"],ans:0,topic:"INTERVALS",exp:"\\(A = (-3, 3)\\), \\(B = (1, \\infty)\\). \\(A \\cap B = (1, 3)\\).",review:"Ôn mục VI"},
+    {q:"\"\\(x\\) is divisible by 2\" is a necessary condition for:",opts:["\\(x\\) is divisible by 4","\\(x\\) is odd","\\(x\\) is prime","\\(x = 3\\)"],ans:0,topic:"CONDITIONS",exp:"Nếu \\(x\\) chia hết cho 4 thì \\(x\\) chia hết cho 2. Vậy \"chia hết cho 2\" là điều kiện cần cho \"chia hết cho 4\".",review:"Ôn mục V"},
+    {q:"In a class of 50 students, 30 study French, 25 study Spanish, 10 study both. How many study exactly one language?",opts:["35","45","25","15"],ans:0,topic:"VENN",exp:"Exactly one = \\((30 - 10) + (25 - 10) = 20 + 15 = 35\\).",review:"Ôn mục VI"},
+    {q:"Which statement is equivalent to \\(P \\Rightarrow Q\\)?",opts:["\\(Q \\Rightarrow P\\)","\\(\\neg Q \\Rightarrow \\neg P\\)","\\(\\neg P \\Rightarrow \\neg Q\\)","\\(P \\land Q\\)"],ans:1,topic:"LOGIC",exp:"Phản đảo tương đương với mệnh đề gốc.",review:"Ôn mục IV"},
+    {q:"If \\(A \\subset B\\) (proper subset), which is true?",opts:["\\(A = B\\)","Every element of B is in A","B has at least one element not in A","A has at least one element not in B"],ans:2,topic:"SETS",exp:"Tập con thực sự: \\(A \\subseteq B\\) và \\(A \\neq B\\) ⇒ B có phần tử ngoài A.",review:"Ôn mục I"},
+    {q:"What is the set \\(\\{x \\in \\mathbb{Z} : -2 < x \\leq 3\\}\\)?",opts:["\\(\\{-1, 0, 1, 2, 3\\}\\)","\\(\\{-2, -1, 0, 1, 2, 3\\}\\)","\\(\\{0, 1, 2, 3\\}\\)","\\(\\{-1, 0, 1, 2\\}\\)"],ans:0,topic:"INTERVALS",exp:"Số nguyên \\(x\\) thỏa \\(-2 < x \\leq 3\\): \\(\\{-1, 0, 1, 2, 3\\}\\).",review:"Ôn mục VI"},
+    {q:"De Morgan: \\(\\neg(P \\land Q) \\equiv \\)?",opts:["\\(\\neg P \\lor \\neg Q\\)","\\(\\neg P \\land \\neg Q\\)","\\(P \\lor Q\\)","\\(P \\land Q\\)"],ans:0,topic:"LOGIC",exp:"\\(\\neg(P \\land Q) \\equiv \\neg P \\lor \\neg Q\\).",review:"Ôn mục IV"},
+    {q:"The number of proper subsets of a set with 4 elements:",opts:["16","15","8","14"],ans:1,topic:"SETS",exp:"Số tập con = \\(2^4 = 16\\). Bỏ tập chính nó ⇒ 15 proper subsets.",review:"Ôn mục I"},
+    {q:"\\(P\\): \"\\(x\\) is prime\", \\(Q\\): \"\\(x\\) is odd\". For \\(x = 2\\), what is \\(P \\Rightarrow Q\\)?",opts:["True","False","Undefined","Both"],ans:1,topic:"LOGIC",exp:"\\(x = 2\\): P đúng (2 nguyên tố), Q sai (2 chẵn). \\(P \\Rightarrow Q\\) sai.",review:"Ôn mục IV"},
+    {q:"\\(\\forall x \\in \\mathbb{Z}, x^2 \\geq 0\\) is:",opts:["True","False","Undefined","Only for positive x"],ans:0,topic:"QUANT",exp:"Bình phương số nguyên luôn không âm.",review:"Ôn mục V"},
+    {q:"\\(A = \\{1, 2, 3, 4, 5\\}\\), \\(B = \\{2, 4, 6\\}\\), \\(C = \\{1, 3, 5\\}\\). Find \\((A \\setminus B) \\cap C\\).",opts:["\\(\\{1, 3, 5\\}\\)","\\(\\{2, 4\\}\\)","\\(\\varnothing\\)","\\(\\{1, 2, 3\\}\\)"],ans:0,topic:"SETOPS",exp:"\\(A \\setminus B = \\{1, 3, 5\\}\\). Giao với \\(C = \\{1, 3, 5\\}\\) ⇒ \\(\\{1, 3, 5\\}\\).",review:"Ôn mục II"},
+    {q:"What interval represents \\(\\{x \\in \\mathbb{R} : x \\leq 2\\}\\)?",opts:["\\((-\\infty, 2]\\)","\\((-\\infty, 2)\\)","\\([2, \\infty)\\)","\\((2, \\infty)\\)"],ans:0,topic:"INTERVALS",exp:"\\(x \\leq 2\\) ⇒ \\((-\\infty, 2]\\).",review:"Ôn mục VI"},
+    {q:"\"If \\(1 + 1 = 3\\), then \\(2 + 2 = 5\\)\" is:",opts:["True","False","Undefined","Both"],ans:0,topic:"LOGIC",exp:"Tiền đề sai ⇒ mệnh đề kéo theo đúng (vacuously true).",review:"Ôn mục IV"}
+  ]},
+  3:{name:"Set 3 — Advanced",desc:"Bài toán SAT-style phức hợp: Venn 3 tập, phủ định lượng từ lồng nhau, điều kiện cần–đủ, tương đương logic và phản ví dụ.",questions:[
+    {q:"The negation of \"\\(\\forall \\varepsilon > 0, \\exists \\delta > 0, |x| < \\delta \\Rightarrow |f(x)| < \\varepsilon\\)\" is:",opts:["\\(\\exists \\varepsilon > 0, \\forall \\delta > 0, |x| < \\delta \\land |f(x)| \\geq \\varepsilon\\)","\\(\\forall \\varepsilon > 0, \\exists \\delta > 0, |x| < \\delta \\land |f(x)| \\geq \\varepsilon\\)","\\(\\exists \\varepsilon > 0, \\exists \\delta > 0, |x| < \\delta \\land |f(x)| \\geq \\varepsilon\\)","\\(\\forall \\varepsilon > 0, \\forall \\delta > 0, |x| < \\delta \\Rightarrow |f(x)| \\geq \\varepsilon\\)"],ans:0,topic:"QUANT",exp:"\\(\\neg(\\forall\\varepsilon, \\exists\\delta, A \\Rightarrow B) \\equiv \\exists\\varepsilon, \\forall\\delta, A \\land \\neg B\\).",review:"Ôn mục V"},
+    {q:"Survey of 200 people: 120 like coffee, 90 like tea, 70 like juice; 50 like coffee & tea, 40 like tea & juice, 30 like coffee & juice, 20 like all three. How many like exactly one?",opts:["100","80","120","60"],ans:0,topic:"VENN",exp:"Coffee only = 120−50−30+20 = 60; Tea only = 90−50−40+20 = 20; Juice only = 70−40−30+20 = 20. Total = 100.",review:"Ôn mục VI"},
+    {q:"\"\\(x^2 > 4\\)\" is a sufficient condition for:",opts:["\\(x > 2\\)","\\(|x| > 1\\)","\\(x < 2\\)","\\(x = 2\\)"],ans:1,topic:"CONDITIONS",exp:"\\(x^2 > 4 \\Rightarrow |x| > 2 > 1\\). Vậy \\(x^2 > 4\\) đủ cho \\(|x| > 1\\).",review:"Ôn mục V"},
+    {q:"\\(\\neg(P \\Rightarrow Q)\\) is equivalent to:",opts:["\\(P \\land \\neg Q\\)","\\(\\neg P \\land Q\\)","\\(\\neg P \\lor Q\\)","\\(P \\lor Q\\)"],ans:0,topic:"LOGIC",exp:"\\(\\neg(P \\Rightarrow Q) \\equiv P \\land \\neg Q\\).",review:"Ôn mục IV"},
+    {q:"\\(A = \\{x \\in \\mathbb{R} : x^2 - 3x + 2 < 0\\}\\), \\(B = \\{x \\in \\mathbb{R} : x > 0\\}\\). Find \\(A \\cap B\\).",opts:["\\((1, 2)\\)","\\((0, 2)\\)","\\((1, \\infty)\\)","\\((0, 1)\\)"],ans:0,topic:"INTERVALS",exp:"\\(x^2 - 3x + 2 < 0 \\iff (x-1)(x-2) < 0 \\iff 1 < x < 2\\). \\(A \\cap B = (1, 2)\\).",review:"Ôn mục VI"},
+    {q:"\"If \\(n\\) is even, then \\(n^2\\) is even.\" The inverse is:",opts:["If \\(n\\) is odd, then \\(n^2\\) is odd","If \\(n^2\\) is even, then \\(n\\) is even","If \\(n\\) is not even, then \\(n^2\\) is not even","If \\(n^2\\) is odd, then \\(n\\) is odd"],ans:2,topic:"LOGIC",exp:"Inverse của \\(P \\Rightarrow Q\\) là \\(\\neg P \\Rightarrow \\neg Q\\): \"\\(n\\) không chẵn ⇒ \\(n^2\\) không chẵn\".",review:"Ôn mục IV"},
+    {q:"The power set of a set with 10 elements has:",opts:["100","512","1024","20"],ans:2,topic:"SETS",exp:"\\(2^{10} = 1024\\).",review:"Ôn mục I"},
+    {q:"\\(\\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, x + y = 0\\). Is this true?",opts:["True","False","Undefined","Only for positive x"],ans:0,topic:"QUANT",exp:"Với mỗi \\(x\\), chọn \\(y = -x\\) thì \\(x + y = 0\\). Mệnh đề đúng.",review:"Ôn mục V"},
+    {q:"\\(\\exists x \\in \\mathbb{R}, \\forall y \\in \\mathbb{R}, x + y = 0\\). Is this true?",opts:["True","False","Undefined","Depends"],ans:1,topic:"QUANT",exp:"Không có \\(x\\) nào thỏa mãn với mọi \\(y\\). Mệnh đề sai.",review:"Ôn mục V"},
+    {q:"Group of 30: 15 English, 12 French, 8 German; 5 English & French, 4 English & German, 3 French & German, 2 all three. How many speak at least one?",opts:["25","27","23","30"],ans:0,topic:"VENN",exp:"\\(15+12+8-5-4-3+2 = 25\\).",review:"Ôn mục VI"},
+    {q:"\"If \\(x^2 = 4\\), then \\(x = 2\\).\" A counterexample is:",opts:["\\(x = 0\\)","\\(x = -2\\)","\\(x = 4\\)","\\(x = 1\\)"],ans:1,topic:"QUANT",exp:"\\(x = -2\\): \\((-2)^2 = 4\\) nhưng \\(-2 \\neq 2\\).",review:"Ôn mục V"},
+    {q:"\\((P \\Rightarrow Q) \\land (Q \\Rightarrow P)\\) is equivalent to:",opts:["\\(P \\lor Q\\)","\\(P \\land Q\\)","\\(P \\Leftrightarrow Q\\)","\\(\\neg P \\land \\neg Q\\)"],ans:2,topic:"EQUIV",exp:"Hai chiều kéo theo tương đương với tương đương logic.",review:"Ôn mục IV"},
+    {q:"\\(A = (-\\infty, 2)\\), \\(B = (1, \\infty)\\), \\(C = [0, 3]\\). Find \\((A \\cap B) \\cup C\\).",opts:["\\([0, 3]\\)","\\((1, 2)\\)","\\((1, 3]\\)","\\([0, 2)\\)"],ans:0,topic:"INTERVALS",exp:"\\(A \\cap B = (1, 2)\\). \\((1, 2) \\cup [0, 3] = [0, 3]\\).",review:"Ôn mục VI"},
+    {q:"\"\\(x > 3\\)\" is a necessary condition for \"\\(x > 5\\)\". Is this true?",opts:["True","False","Undefined","Only for integers"],ans:0,topic:"CONDITIONS",exp:"\\(x > 5 \\Rightarrow x > 3\\). Vậy \\(x > 3\\) là điều kiện cần cho \\(x > 5\\).",review:"Ôn mục V"},
+    {q:"The negation of \"Every student who studies hard will pass\" is:",opts:["Every student who studies hard will fail","Some student who studies hard will not pass","No student who studies hard will pass","Some student who does not study hard will pass"],ans:1,topic:"QUANT",exp:"\\(\\neg(\\forall x, (S(x) \\Rightarrow P(x))) \\equiv \\exists x, (S(x) \\land \\neg P(x))\\).",review:"Ôn mục V"},
+    {q:"\\(A = \\{1, 2, 3, 4, 5\\}\\), \\(B = \\{2, 3\\}\\). Then \\(A \\setminus B = \\)?",opts:["\\(\\{1, 4, 5\\}\\)","\\(\\{2, 3\\}\\)","\\(\\{1, 2, 3\\}\\)","\\(\\varnothing\\)"],ans:0,topic:"SETOPS",exp:"Phần tử thuộc A mà không thuộc B: \\(\\{1, 4, 5\\}\\).",review:"Ôn mục II"},
+    {q:"\\(\\exists! x \\in \\mathbb{R}, x^2 = 4\\) (exists exactly one) is:",opts:["True","False","Undefined","Depends"],ans:1,topic:"QUANT",exp:"Có hai nghiệm: \\(x = 2\\) và \\(x = -2\\). Mệnh đề sai.",review:"Ôn mục V"},
+    {q:"For sets \\(A, B\\), \\((A \\cup B)^c = \\)?",opts:["\\(A^c \\cap B^c\\)","\\(A^c \\cup B^c\\)","\\(A \\cap B\\)","\\(A \\cup B\\)"],ans:0,topic:"SETOPS",exp:"De Morgan: \\((A \\cup B)^c = A^c \\cap B^c\\).",review:"Ôn mục II"},
+    {q:"\\(|A| = 5\\), \\(|B| = 7\\), \\(|A \\cap B| = 2\\). Find \\(|A \\setminus B|\\).",opts:["3","5","2","7"],ans:0,topic:"VENN",exp:"\\(|A \\setminus B| = |A| - |A \\cap B| = 5 - 2 = 3\\).",review:"Ôn mục VI"},
+    {q:"The interval \\((-\\infty, 1) \\cup (1, \\infty)\\) represents:",opts:["All real numbers","All real numbers except 1","\\(( -\\infty, \\infty)\\)","Numbers greater than 1"],ans:1,topic:"INTERVALS",exp:"Hợp hai khoảng mở hai bên số 1 ⇒ tất cả số thực trừ 1.",review:"Ôn mục VI"}
+  ]}
+};
+
+/* ============ STATE ============ */
+const TEST_DURATION = 30 * 60;
+let testState = null;
+let testTimerInterval = null;
+let currentScoreId = null;
+
+/* ============ LEADERBOARD ============ */
+function saveScoreToLocalStorage(scoreData){
+  try {
+    const today = new Date().toLocaleDateString('vi-VN');
+    const key = 'sat_leaderboard_sets_' + today;
+    let board = JSON.parse(localStorage.getItem(key) || '[]');
+    board.push(scoreData);
+    board.sort(function(a,b){ if(b.correct !== a.correct) return b.correct - a.correct; return a.timeUsed - b.timeUsed; });
+    localStorage.setItem(key, JSON.stringify(board));
+  } catch(e){ console.error('Lỗi lưu bảng xếp hạng', e); }
+}
+function getLeaderboardHTML(){
+  try {
+    const today = new Date().toLocaleDateString('vi-VN');
+    const key = 'sat_leaderboard_sets_' + today;
+    const board = JSON.parse(localStorage.getItem(key) || '[]');
+    if(board.length === 0) return '';
+    const fmtTime = function(sec){ return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0'); };
+    let html = '<div class="result-section-title"><span class="icon">🏆</span> Bảng xếp hạng hôm nay ('+today+')</div><div style="overflow-x:auto;margin-bottom:22px;"><table class="topic-table"><thead><tr><th style="text-align:center">Hạng</th><th style="text-align:center">Bộ đề</th><th style="text-align:center">Kết quả</th><th style="text-align:center">Thời gian</th></tr></thead><tbody>';
+    board.slice(0,10).forEach(function(item,index){
+      const medal = index===0?'🥇':index===1?'🥈':index===2?'🥉':(index+1);
+      const isCurrent = (item.id === currentScoreId);
+      html += '<tr style="'+(isCurrent?'background:#eaf7eb;font-weight:bold;border-left:3px solid #4CAF50':'')+'"><td style="text-align:center;font-size:16px;">'+medal+'</td><td style="text-align:center">Bộ '+item.setNum+'</td><td style="text-align:center;color:'+(item.pct>=80?'#4CAF50':'#1B3A6B')+';font-weight:800;">'+item.correct+'/'+item.total+' ('+item.pct+'%)</td><td style="text-align:center">'+fmtTime(item.timeUsed)+'</td></tr>';
+    });
+    return html + '</tbody></table></div>';
+  } catch(e){ return ''; }
+}
+
+/* ============ RENDER SET SELECTOR ============ */
+function renderSatSetSelector(){
+  const c = document.getElementById('satSetSelector');
+  c.innerHTML = '';
+  Object.keys(SAT_SETS).forEach(function(k){
+    const s = SAT_SETS[k];
+    const card = document.createElement('div');
+    card.className = 'set-card';
+    card.onclick = function(){ startSetTest(parseInt(k)); };
+    card.innerHTML = '<div class="set-badge">SET '+k+'</div><h4>'+s.name+'</h4><p>'+s.desc+'</p><div class="set-meta"><span><strong>20</strong> câu</span><span><strong>30:00</strong> phút</span><span><strong>A–D</strong></span></div><div class="set-start">▶ Bắt đầu làm bài →</div>';
+    c.appendChild(card);
+  });
+}
+
+/* ============ START TEST ============ */
+function startSetTest(setNum){
+  testState = { setNum: setNum, current: 0, answers: new Array(20).fill(null), timeLeft: TEST_DURATION, submitted: false };
+  document.getElementById('satSetSelector').style.display = 'none';
+  document.getElementById('satResultScreen').style.display = 'none';
+  document.getElementById('satResultScreen').innerHTML = '';
+  document.getElementById('satTestScreen').style.display = 'block';
+  document.getElementById('testSetName').textContent = SAT_SETS[setNum].name;
+  renderNavGrid();
+  renderTestQuestion();
+  startTestTimer();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function startTestTimer(){
+  if(testTimerInterval) clearInterval(testTimerInterval);
+  updateTimerDisplay();
+  testTimerInterval = setInterval(function(){
+    if(!testState || testState.submitted) return;
+    testState.timeLeft--;
+    updateTimerDisplay();
+    if(testState.timeLeft <= 0){ clearInterval(testTimerInterval); testTimerInterval = null; submitTest(true); }
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  if(!testState) return;
+  const el = document.getElementById('testTimer');
+  const t = Math.max(0, testState.timeLeft);
+  const m = String(Math.floor(t/60)).padStart(2,'0');
+  const s = String(t%60).padStart(2,'0');
+  el.textContent = m+':'+s;
+  el.classList.remove('warning','danger');
+  if(t <= 60) el.classList.add('danger');
+  else if(t <= 180) el.classList.add('warning');
+}
+
+function renderNavGrid(){
+  const grid = document.getElementById('navGrid');
+  grid.innerHTML = '';
+  for(let i=0;i<20;i++){
+    const b = document.createElement('button');
+    b.className = 'nav-cell';
+    b.textContent = i+1;
+    b.onclick = (function(idx){ return function(){ testState.current = idx; renderTestQuestion(); renderNavGrid(); }; })(i);
+    grid.appendChild(b);
+  }
+  updateNavStatus();
+}
+
+function updateNavStatus(){
+  if(!testState) return;
+  document.querySelectorAll('#navGrid .nav-cell').forEach(function(c,i){
+    c.classList.toggle('answered', testState.answers[i] !== null);
+    c.classList.toggle('current', i === testState.current);
+  });
+  const answered = testState.answers.filter(function(a){ return a !== null; }).length;
+  document.getElementById('testProgress').textContent = 'Câu '+(testState.current+1)+' / 20 · Đã trả lời '+answered+'/20';
+}
+
+function renderTestQuestion(){
+  if(!testState) return;
+  const item = SAT_SETS[testState.setNum].questions[testState.current];
+  document.getElementById('testQNum').textContent = testState.current+1;
+  document.getElementById('testQText').innerHTML = item.q;
+  const optsC = document.getElementById('testOptions');
+  optsC.innerHTML = '';
+  item.opts.forEach(function(o,i){
+    const b = document.createElement('button');
+    b.className = 'option';
+    if(testState.answers[testState.current] === i) b.classList.add('selected');
+    b.innerHTML = '<span class="letter">'+letterMap[i]+'</span><span class="opt-text">'+o+'</span>';
+    b.onclick = function(){ selectTestOption(i); };
+    optsC.appendChild(b);
+  });
+  document.getElementById('testQuestionCard').classList.remove('correct','wrong');
+  document.getElementById('btnPrev').disabled = testState.current === 0;
+  document.getElementById('btnNext').textContent = testState.current === 19 ? '📝 Nộp bài' : 'Câu tiếp →';
+  if(window.renderMathInElement){ renderMathInElement(document.getElementById('testQuestionCard'), {delimiters:[{left:'\\(',right:'\\)',display:false}]}); }
+  updateNavStatus();
+}
+
+function selectTestOption(optIdx){
+  if(!testState || testState.submitted) return;
+  testState.answers[testState.current] = optIdx;
+  document.querySelectorAll('#testOptions .option').forEach(function(o,i){ o.classList.toggle('selected', i === optIdx); });
+  updateNavStatus();
+}
+
+function goToQuestion(i){ if(!testState || i<0 || i>19) return; testState.current = i; renderTestQuestion(); }
+
+/* ============ BUTTON WIRING ============ */
+document.getElementById('btnPrev').onclick = function(){ if(testState) goToQuestion(testState.current - 1); };
+document.getElementById('btnNext').onclick = function(){
+  if(!testState) return;
+  if(testState.current === 19) submitTest(false);
+  else goToQuestion(testState.current + 1);
+};
+document.getElementById('btnQuitTest').onclick = function(){
+  let ok = true;
+  try { ok = window.confirm('Bạn có chắc muốn thoát? Bài làm sẽ không được lưu.'); } catch(e){ ok = true; }
+  if(ok === false) return;
+  if(testTimerInterval){ clearInterval(testTimerInterval); testTimerInterval = null; }
+  testState = null;
+  document.getElementById('satTestScreen').style.display = 'none';
+  document.getElementById('satSetSelector').style.display = 'grid';
+};
+document.getElementById('btnSubmitTest').onclick = function(){ submitTest(false); };
+document.getElementById('btnForceResult').onclick = function(){
+  if(!testState || testState.submitted) return;
+  submitTest(true);
+};
+
+/* ============ SUBMIT TEST ============ */
+function submitTest(auto){
+  if(!testState || testState.submitted) return;
+  if(!auto){
+    const unanswered = testState.answers.filter(function(a){ return a === null; }).length;
+    if(unanswered > 0){
+      let ok = true;
+      try { ok = window.confirm('Bạn còn ' + unanswered + ' câu chưa trả lời. Vẫn nộp bài?'); } catch(e){ ok = true; }
+      if(ok === false) return;
+    }
+  }
+  testState.submitted = true;
+  if(testTimerInterval){ clearInterval(testTimerInterval); testTimerInterval = null; }
+  try {
+    const questions = SAT_SETS[testState.setNum].questions;
+    let correct = 0;
+    testState.answers.forEach(function(ans,i){ if(ans === questions[i].ans) correct++; });
+    const timeUsed = TEST_DURATION - testState.timeLeft;
+    currentScoreId = Date.now().toString();
+    saveScoreToLocalStorage({
+      id: currentScoreId,
+      setNum: testState.setNum, correct: correct, total: questions.length,
+      pct: Math.round(correct / questions.length * 100), timeUsed: timeUsed
+    });
+  } catch(e){ console.error('Lỗi lưu điểm:', e); }
+  document.getElementById('satTestScreen').style.display = 'none';
+  try { renderResult(); } catch(e){
+    console.error('Lỗi render kết quả:', e);
+    showBasicResult(e);
+  }
+  const rs = document.getElementById('satResultScreen');
+  if(rs){
+    rs.style.display = 'block';
+    if(!rs.innerHTML || rs.innerHTML.trim() === ''){ showBasicResult(new Error('Empty content')); }
+  }
+  try { window.scrollTo({top:0,behavior:'smooth'}); } catch(e){ window.scrollTo(0,0); }
+  try { playFanfare(); } catch(e){}
+}
+
+function showBasicResult(err){
+  const c = document.getElementById('satResultScreen');
+  if(!c) return;
+  const questions = (testState && SAT_SETS[testState.setNum]) ? SAT_SETS[testState.setNum].questions : [];
+  let correct = 0;
+  if(testState && questions.length){
+    testState.answers.forEach(function(ans,i){ if(ans === questions[i].ans) correct++; });
+  }
+  const total = questions.length || 20;
+  const pct = Math.round(correct / total * 100);
+  c.innerHTML =
+    '<div class="card" style="border-left:6px solid #4CAF50">' +
+    '<h3>✅ Đã hoàn thành bài thi</h3>' +
+    '<div style="display:flex;gap:24px;align-items:center;margin:20px 0;flex-wrap:wrap">' +
+    '<div style="background:#EAF0F9;padding:20px 32px;border-radius:12px;text-align:center">' +
+    '<div style="font-size:42px;font-weight:800;color:#1B3A6B">' + correct + '</div>' +
+    '<div style="font-size:14px;color:#5b6778">/ ' + total + ' câu đúng</div>' +
+    '</div>' +
+    '<div style="background:linear-gradient(135deg,#1B3A6B,#2C5AA0);padding:20px 32px;border-radius:12px;text-align:center;color:#fff">' +
+    '<div style="font-size:42px;font-weight:800;color:#F5B400">' + pct + '%</div>' +
+    '<div style="font-size:14px;opacity:.9">chính xác</div>' +
+    '</div>' +
+    '</div>' +
+    '<p style="color:#E53935;font-size:13px;margin-top:10px">⚠ Chi tiết phân tích không hiển thị: ' + (err && err.message ? err.message : 'Lỗi không xác định') + '</p>' +
+    '<div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">' +
+    '<button class="btn btn-primary" onclick="backToSetSelector()">📚 Chọn bộ khác</button>' +
+    '<button class="btn btn-outline" onclick="switchTab(\'knowledge\')">📖 Ôn lý thuyết</button>' +
+    '<button class="btn btn-outline" onclick="switchTab(\'practice\')">✏️ Luyện tập</button>' +
+    '</div></div>';
+  c.style.display = 'block';
+}
+
+/* ============ RENDER RESULT CHI TIẾT ============ */
+function renderResult(){
+  const c = document.getElementById('satResultScreen');
+  if(!c) return;
+  c.style.display = 'block';
+
+  const setNum = testState.setNum;
+  const questions = SAT_SETS[setNum].questions;
+  const autoSubmitted = testState.timeLeft <= 0;
+
+  let correct = 0, wrong = 0, unanswered = 0;
+  const topicStat = {};
+  Object.keys(TOPICS).forEach(function(k){ topicStat[k] = { correct: 0, total: 0 }; });
+  const wrongList = [];
+
+  questions.forEach(function(item,i){
+    const ans = testState.answers[i];
+    topicStat[item.topic].total++;
+    if(ans === null){ unanswered++; wrongList.push({ idx: i, item: item, yourAns: null }); }
+    else if(ans === item.ans){ correct++; topicStat[item.topic].correct++; }
+    else { wrong++; wrongList.push({ idx: i, item: item, yourAns: ans }); }
+  });
+
+  const total = questions.length;
+  const pct = Math.round(correct / total * 100);
+  const estimatedSAT = Math.min(800, Math.max(200, Math.round(200 + (correct/total)*600)));
+  const timeUsed = TEST_DURATION - testState.timeLeft;
+  const tm = String(Math.floor(timeUsed/60)).padStart(2,'0');
+  const ts = String(timeUsed%60).padStart(2,'0');
+  const answered = correct + wrong;
+  const avgTime = answered > 0 ? Math.round(timeUsed/answered) : 0;
+  const avgTimeStr = Math.floor(avgTime/60) + ':' + String(avgTime%60).padStart(2,'0');
+
+  let level, levelColor, levelIcon, levelDesc, levelAdvice;
+  if(pct >= 90){ level="XUẤT SẮC"; levelColor="#4CAF50"; levelIcon="🏆"; levelDesc="Hiểu rất sâu về tập hợp, mệnh đề và logic!"; levelAdvice="Luyện thêm bài toán Venn 3 tập và phủ định lượng từ lồng nhau."; }
+  else if(pct >= 75){ level="TỐT"; levelColor="#2C5AA0"; levelIcon="⭐"; levelDesc="Nắm tốt các phép toán tập hợp và logic."; levelAdvice="Tập trung vào De Morgan, phản đảo và điều kiện cần–đủ để đạt 700+."; }
+  else if(pct >= 60){ level="KHÁ"; levelColor="#E8A317"; levelIcon="📈"; levelDesc="Có nền tảng nhưng còn nhầm lẫn ở phép toán tập hợp phức tạp hoặc logic."; levelAdvice="Ôn lại mục II và IV, làm lại các câu sai."; }
+  else if(pct >= 40){ level="TRUNG BÌNH"; levelColor="#FF9800"; levelIcon="📚"; levelDesc="Cần củng cố định nghĩa tập hợp và các phép toán cơ bản."; levelAdvice="Đọc kỹ mục I–III và làm lại Nhóm 1."; }
+  else { level="CẦN CỐ GẮNG"; levelColor="#E53935"; levelIcon="🔧"; levelDesc="Cần xây dựng lại nền tảng tập hợp và mệnh đề."; levelAdvice="Bắt đầu từ ký hiệu tập hợp, phép hợp/giao/hiệu, sau đó mới sang logic."; }
+
+  let timeEval, timeIcon, timeColor;
+  if(timeUsed <= TEST_DURATION*0.7){ timeEval="Quản lý thời gian xuất sắc"; timeIcon="🚀"; timeColor="#4CAF50"; }
+  else if(timeUsed <= TEST_DURATION*0.9){ timeEval="Quản lý thời gian tốt"; timeIcon="⏱️"; timeColor="#2C5AA0"; }
+  else if(timeUsed < TEST_DURATION){ timeEval="Sát giờ — cần tăng tốc"; timeIcon="⏰"; timeColor="#E8A317"; }
+  else { timeEval="Hết giờ"; timeIcon="🚨"; timeColor="#E53935"; }
+
+  const topicList = Object.keys(topicStat)
+    .filter(function(k){ return topicStat[k].total > 0; })
+    .map(function(k){ return { key: k, name: TOPICS[k], correct: topicStat[k].correct, total: topicStat[k].total, pct: Math.round(topicStat[k].correct/topicStat[k].total*100) }; })
+    .sort(function(a,b){ return a.pct - b.pct; });
+
+  const weakTopics = topicList.filter(function(t){ return t.pct < 60; });
+  const mediumTopics = topicList.filter(function(t){ return t.pct >= 60 && t.pct < 80; });
+  const strongTopics = topicList.filter(function(t){ return t.pct >= 80; });
+
+  let roadmapHTML = '';
+  if(weakTopics.length > 0){
+    roadmapHTML += '<div class="roadmap-phase phase-1"><div class="phase-num">1</div><div class="phase-content"><h4>Giai đoạn 1: Củng cố kiến thức nền tảng <span class="phase-time">⏳ 1–3 ngày</span></h4><ul>';
+    weakTopics.forEach(function(t){ roadmapHTML += '<li><strong>' + t.name + '</strong> (' + t.correct + '/' + t.total + ' = ' + t.pct + '%) — ' + TOPIC_RECOMMENDATIONS[t.key] + '</li>'; });
+    roadmapHTML += '</ul><div class="phase-actions"><button class="btn btn-outline btn-sm" onclick="switchTab(\'knowledge\')">📖 Ôn lý thuyết</button><button class="btn btn-outline btn-sm" onclick="switchTab(\'practice\')">✏️ Luyện nhóm cơ bản</button></div></div></div>';
+  }
+  if(mediumTopics.length > 0){
+    roadmapHTML += '<div class="roadmap-phase phase-2"><div class="phase-num">2</div><div class="phase-content"><h4>Giai đoạn 2: Luyện tập nâng cao <span class="phase-time">⏳ 3–5 ngày</span></h4><ul>';
+    mediumTopics.forEach(function(t){ roadmapHTML += '<li><strong>' + t.name + '</strong> (' + t.correct + '/' + t.total + ' = ' + t.pct + '%) — Cần thêm bài tập vận dụng.</li>'; });
+    roadmapHTML += '</ul><div class="phase-actions"><button class="btn btn-outline btn-sm" onclick="switchTab(\'practice\')">✏️ Luyện nhóm trung bình</button><button class="btn btn-primary btn-sm" onclick="restartSameSet()">🔄 Làm lại bộ đề này</button></div></div></div>';
+  }
+  roadmapHTML += '<div class="roadmap-phase phase-3"><div class="phase-num">3</div><div class="phase-content"><h4>Giai đoạn 3: ' + (strongTopics.length > 0 ? 'Duy trì &amp; mở rộng' : 'Luyện đề tổng hợp') + ' <span class="phase-time">⏳ Liên tục</span></h4><ul>';
+  if(strongTopics.length > 0){
+    strongTopics.forEach(function(t){ roadmapHTML += '<li><strong>' + t.name + '</strong> (' + t.correct + '/' + t.total + ' = ' + t.pct + '%) — Duy trì phong độ.</li>'; });
+  } else {
+    roadmapHTML += '<li>Luyện các bộ đề khác để đa dạng dạng bài.</li>';
+  }
+  roadmapHTML += '</ul><div class="phase-actions"><button class="btn btn-outline btn-sm" onclick="backToSetSelector()">📚 Chọn bộ khác</button><button class="btn btn-outline btn-sm" onclick="switchTab(\'sat\')">⏱️ Luyện đề khác</button></div></div></div>';
+
+  let topicTableHTML = '';
+  topicList.forEach(function(t){
+    let cls = '', status = '', statusColor = '';
+    if(t.pct >= 80){ status = '✅ Vững'; statusColor = '#4CAF50'; }
+    else if(t.pct >= 60){ cls = 'warn'; status = '⚠ Cần luyện'; statusColor = '#E8A317'; }
+    else { cls = 'bad'; status = '🔴 Yếu'; statusColor = '#E53935'; }
+    topicTableHTML += '<tr><td><strong>' + t.name + '</strong></td><td><div class="topic-bar-cell"><div class="topic-bar"><div class="topic-bar-fill ' + cls + '" style="width:' + t.pct + '%"></div></div><span style="min-width:44px;font-weight:700;color:#5b6778">' + t.pct + '%</span></div></td><td style="text-align:right"><span class="topic-score">' + t.correct + '/' + t.total + '</span></td><td style="text-align:center"><strong style="color:' + statusColor + ';font-size:13px">' + status + '</strong></td></tr>';
+    topicTableHTML += '<tr><td colspan="4" style="padding:0 16px 12px;border-bottom:1px solid #eef2f8"><div class="topic-recommend">📌 <strong>Gợi ý:</strong> ' + TOPIC_RECOMMENDATIONS[t.key] + '</div></td></tr>';
+  });
+
+  let wrongHTML = '';
+  if(wrongList.length > 0){
+    wrongHTML += '<div class="result-section-title"><span class="icon" style="background:#fdeaea;color:#E53935">🔍</span> Phân tích ' + wrongList.length + ' câu sai / bỏ trống</div>';
+    wrongList.forEach(function(w){
+      const item = w.item;
+      const cls = w.yourAns === null ? 'unanswered' : '';
+      const yourText = w.yourAns === null ? '— Không trả lời —' : item.opts[w.yourAns];
+      wrongHTML += '<div class="wrong-item ' + cls + '">' +
+        '<div class="wrong-head"><div class="wrong-num">' + (w.idx+1) + '</div><div class="wrong-q">' + item.q + '<div><span class="topic-tag">' + TOPICS[item.topic] + '</span></div></div></div>' +
+        '<div class="ans-row">' +
+        '<div class="ans-box your"><div class="lbl">Bạn chọn</div><div class="val">' + (w.yourAns === null ? '—' : letterMap[w.yourAns] + '. ') + yourText + '</div></div>' +
+        '<div class="ans-box correct"><div class="lbl">Đáp án đúng</div><div class="val">' + letterMap[item.ans] + '. ' + item.opts[item.ans] + '</div></div>' +
+        '</div>' +
+        '<div class="exp-box"><div class="lbl">🧮 Lời giải</div>' + item.exp + '</div>' +
+        '<div class="review-box">📖 ' + item.review + '</div>' +
+        '</div>';
+    });
+  } else {
+    wrongHTML = '<div class="roadmap" style="border-left-color:#4CAF50"><h3>🎯 Tất cả câu trả lời đều chính xác!</h3><p style="font-size:14px;color:#5b6778">Không có câu nào sai. Em đã sẵn sàng cho các bộ đề khó hơn!</p></div>';
+  }
+
+  c.innerHTML =
+    '<div class="result-hero">' +
+    '<div>' +
+    '<h2>🎉 Hoàn thành ' + SAT_SETS[setNum].name + '!</h2>' +
+    '<p>Bạn đã làm ' + total + ' câu trong ' + tm + ':' + ts + '. ' + (autoSubmitted ? '⏰ Hết giờ! ' : '') + (unanswered > 0 ? 'Còn ' + unanswered + ' câu chưa trả lời.' : '') + '</p>' +
+    '</div>' +
+    '<div class="result-score"><div class="num">' + correct + '</div><div class="den">/ ' + total + ' câu đúng</div><div class="pct">' + pct + '%</div></div>' +
+    '</div>' +
+
+    '<div class="level-banner" style="border-left-color:' + levelColor + '">' +
+    '<div class="level-icon" style="background:' + levelColor + '">' + levelIcon + '</div>' +
+    '<div class="level-content"><h3 style="color:' + levelColor + '">Đánh giá: ' + level + '</h3><p>' + levelDesc + '</p><div class="level-advice"><strong>💡 Định hướng:</strong> ' + levelAdvice + '</div></div>' +
+    '</div>' +
+
+    '<div class="result-stats">' +
+    '<div class="stat-box green"><div class="label">✅ Đúng</div><div class="value">' + correct + '</div><div class="sub">Chiếm ' + pct + '%</div></div>' +
+    '<div class="stat-box red"><div class="label">❌ Sai</div><div class="value">' + wrong + '</div><div class="sub">Cần xem lại</div></div>' +
+    '<div class="stat-box yellow"><div class="label">⚠ Bỏ trống</div><div class="value">' + unanswered + '</div><div class="sub">Chưa trả lời</div></div>' +
+    '<div class="stat-box"><div class="label">🎯 SAT ước lượng</div><div class="value">' + estimatedSAT + '</div><div class="sub">/ 800</div></div>' +
+    '</div>' +
+
+    getLeaderboardHTML() +
+
+    '<div class="result-section-title"><span class="icon">⏱</span> Phân tích thời gian</div>' +
+    '<div class="time-analysis">' +
+    '<div class="time-block"><div class="tb-icon">⏰</div><div class="tb-content"><div class="tb-label">Tổng thời gian</div><div class="tb-value">' + tm + ':' + ts + '</div><div class="tb-desc">/ 30:00</div></div></div>' +
+    '<div class="time-block"><div class="tb-icon">⚡</div><div class="tb-content"><div class="tb-label">Trung bình / câu</div><div class="tb-value">' + avgTimeStr + '</div><div class="tb-desc">Mục tiêu: ≤ 1:30</div></div></div>' +
+    '<div class="time-block"><div class="tb-icon" style="background:' + timeColor + '22;color:' + timeColor + '">' + timeIcon + '</div><div class="tb-content"><div class="tb-label">Đánh giá</div><div class="tb-value" style="color:' + timeColor + ';font-size:15px">' + timeEval + '</div><div class="tb-desc">' + (timeUsed < TEST_DURATION ? 'Còn dư ' + Math.floor((TEST_DURATION-timeUsed)/60) + ':' + String((TEST_DURATION-timeUsed)%60).padStart(2,'0') : 'Đã dùng hết') + '</div></div></div>' +
+    '</div>' +
+
+    '<div class="result-section-title"><span class="icon">📊</span> Phân tích theo chủ đề</div>' +
+    '<table class="topic-table"><thead><tr><th style="width:28%">Chủ đề</th><th style="width:38%">Tỉ lệ đúng</th><th style="width:14%;text-align:right">Số câu</th><th style="width:20%;text-align:center">Trạng thái</th></tr></thead><tbody>' + topicTableHTML + '</tbody></table>' +
+
+    '<div class="roadmap"><h3>🗺️ Lộ trình ôn tập cá nhân hóa</h3><p class="roadmap-sub">Dựa trên kết quả của em, đây là lộ trình được thiết kế riêng:</p>' + roadmapHTML + '</div>' +
+
+    wrongHTML +
+
+    '<div class="result-actions">' +
+    '<button class="btn btn-primary" onclick="restartSameSet()">🔄 Làm lại ' + SAT_SETS[setNum].name + '</button>' +
+    '<button class="btn btn-outline" onclick="backToSetSelector()">📚 Chọn bộ khác</button>' +
+    '<button class="btn btn-outline" onclick="switchTab(\'knowledge\')">📖 Ôn lý thuyết</button>' +
+    '<button class="btn btn-outline" onclick="switchTab(\'practice\')">✏️ Luyện tập thêm</button>' +
+    '</div>';
+
+  if(window.renderMathInElement){ renderMathInElement(c, {delimiters:[{left:'\\(',right:'\\)',display:false}]}); }
+}
+
+function restartSameSet(){
+  if(!testState) return;
+  const setNum = testState.setNum;
+  document.getElementById('satResultScreen').style.display = 'none';
+  document.getElementById('satResultScreen').innerHTML = '';
+  startSetTest(setNum);
+}
+
+function backToSetSelector(){
+  document.getElementById('satResultScreen').style.display = 'none';
+  document.getElementById('satResultScreen').innerHTML = '';
+  document.getElementById('satTestScreen').style.display = 'none';
+  document.getElementById('satSetSelector').style.display = 'grid';
+  testState = null;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ============ INIT ============ */
+renderSatSetSelector();
+
+window.addEventListener('load', function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.body, {delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});
+  }
+});
+
+console.log('[SAT Sets & Propositions Web] ✅ Loaded. 3 sets × 20 questions = 60 questions total.');
+</script>
+</body>
+</html>
